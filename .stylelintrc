@@ -1,0 +1,19 @@
+{
+  "plugins": ["stylelint-scss"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-idiomatic-order"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "alpha-value-notation": ["percentage", { "exceptProperties": ["opacity", "color", "background-color"] }]
+  },
+  "ignoreFiles": [
+    "build/**",
+    "dist/**",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.svg"
+  ]
+}

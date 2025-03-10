@@ -1,0 +1,144 @@
+header {
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  padding: 0.6rem 0;
+  border-bottom: 3px solid #cbac6a;
+  animation: nav-slow ease 0.5s;
+  background-color: #a32720;
+  color: #cbac6a;
+}
+
+@keyframes nav-slow {
+  0% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (width <= 812px) and (orientation: landscape) {
+  header {
+    position: absolute;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rem;
+}
+
+@media screen and (width <= 1024px) {
+  .nav {
+    padding: 0 2rem;
+  }
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  width: 30%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+}
+
+@media screen and (width <= 768px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+}
+
+.menu-link {
+  position: relative;
+  display: inline-block;
+  font-size: 1.4vw;
+  list-style-type: none;
+}
+
+.menu-link::after {
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 2px;
+  background: none repeat scroll 0 0 transparent;
+  content: '';
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.menu-link:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+.nav-logo {
+  width: 5%;
+}
+
+.nav-logo img {
+  max-width: 100%;
+}
+
+@media screen and (width <= 767px) {
+  .nav-logo {
+    width: 10%;
+    text-align: left;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  display: flex;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background: #2b2b2a;
+  color: #fff;
+  transform: translate(-100%, 0);
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul {
+  margin-top: 4rem;
+}
+
+.sidebar li {
+  margin-bottom: 3rem;
+  list-style-type: none;
+}
+
+.sidebar .side {
+  font-size: calc(24px + 16 * (100vw / 1920));
+}
+
+.active {
+  transform: translate(0, 0);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (width <= 768px) {
+  .menu-icon {
+    position: relative;
+    z-index: 9;
+    display: block;
+    cursor: pointer;
+  }
+}

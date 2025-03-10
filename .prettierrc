@@ -1,0 +1,25 @@
+{
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": true,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "requirePragma": false,
+  "tabWidth": 2,
+  "useTabs": false,
+  "importOrder": ["^react$",  "^(?!^react$|^@/|^[./]).*", "^src/(.*)$",
+    "^\\.\\./(.(?!\\.css))+$",
+    "^\\./(.(?!\\.css))+$",
+    "^\\.\\./(.+)\\.css$",
+    "^\\./(.+)\\.css$"
+  ],
+  "importOrderSeparation": true,
+  "parser": "typescript",
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "import/extensions": [".js", ".jsx"]
+}

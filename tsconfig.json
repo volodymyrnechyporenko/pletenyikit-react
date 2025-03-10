@@ -1,0 +1,74 @@
+{
+  "include": [
+    "src",
+    "**/*.tsx"
+  ],
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "lib": [
+      "es2022",
+      "es2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom"
+    ],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": false,
+    "baseUrl": ".",
+    "strict": true,
+    "jsx": "react-jsx",
+    "importHelpers": true,
+    "declaration": true,
+    "rootDir": "./",
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "paths": {
+      "@*": [
+        "./src/*"
+      ],
+      "@assets": [
+        "./src/assets/*"
+      ],
+      "@components": [
+        "./src/components/*"
+      ],
+      "@data": [
+        "./src/data/*"
+      ],
+      "@pages": [
+        "./src/pages/*"
+      ],
+      "@router": [
+        "./src/router/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
