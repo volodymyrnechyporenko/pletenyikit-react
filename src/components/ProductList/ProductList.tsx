@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import toys from '@data/toys';
 import accessories from '@data/accessories';
 import pillows from '@data/pillows';
@@ -85,11 +85,9 @@ const ProductList: React.FC = () => {
           .slice()
           .reverse()
           .map(product => (
-            <Product
-              key={product.id}
-              product={product}
-              productPath={`${category}Details`}
-            />
+            <Link to={product.link}>
+              <Product key={product.id} product={product} />
+            </Link>
           ))}
       </div>
     </>
