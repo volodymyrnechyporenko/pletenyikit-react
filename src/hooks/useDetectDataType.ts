@@ -26,33 +26,22 @@ const useDetectDataType = () => {
   const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
-    let data: ProductDetails[] = [];
-    let pageHeading: string = '';
+    const categoryData: { [key: string]: { data: ProductDetails[]; heading: string } } = {
+      toys: { data: toys, heading: 'Іграшки' },
+      accessories: { data: accessories, heading: 'Аксесуари' },
+      pillows: { data: pillows, heading: 'Подушки' },
+      kitchen: { data: kitchen, heading: 'Для кухні' },
+    };
 
-    switch (category) {
-      case 'toys':
-        data = toys;
-        pageHeading = 'Іграшки';
-        break;
-      case 'accessories':
-        data = accessories;
-        pageHeading = 'Аксесуари';
-        break;
-      case 'pillows':
-        data = pillows;
-        pageHeading = 'Подушки';
-        break;
-      case 'kitchen':
-        data = kitchen;
-        pageHeading = 'Для кухні';
-        break;
-      default:
-        data = [];
-        pageHeading = 'Товари';
+    const selectedCategory = categoryData[category as string];
+
+    if (selectedCategory) {
+      setProducts(selectedCategory.data);
+      setHeading(selectedCategory.heading);
+    } else {
+      setProducts([]);
+      setHeading('Товари');
     }
-
-    setProducts(data);
-    setHeading(pageHeading);
   }, [category]);
 
   return {

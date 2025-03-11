@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import ProductList from './components/ProductList/ProductList';
 import Main from './pages/Main';
 import ProductDetails from '@components/ProductDetails/ProductDetails';
+import useScrollPageToTop from '@hooks/useScrollPageToTop';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,8 @@ const App: React.FC = () => {
 };
 
 const AppContent: React.FC = () => {
+  useScrollPageToTop();
+
   return (
     <>
       <Header />
