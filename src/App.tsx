@@ -8,6 +8,7 @@ import ProductList from './components/ProductList/ProductList';
 import Main from './pages/Main';
 import ProductDetails from '@components/ProductDetails/ProductDetails';
 import useScrollPageToTop from '@hooks/useScrollPageToTop';
+import CareConditions from '@pages/CareConditions';
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<Main />} />
           <Route path="/:category" element={<ProductList />} />
           <Route path="/:category/:link" element={<ProductDetails />} />
+          <Route path="care-conditions" element={<CareConditions />} />
         </Routes>
         <AboutUs />
       </main>

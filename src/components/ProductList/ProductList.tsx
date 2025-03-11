@@ -5,14 +5,6 @@ import styles from './ProductList.module.scss';
 import Product from '@components/Product/Product';
 import useDetectDataType from '@hooks/useDetectDataType';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  link: string;
-  images: string[];
-}
-
 const ProductList: React.FC = () => {
   const {category, heading, products, setProducts} = useDetectDataType();
 

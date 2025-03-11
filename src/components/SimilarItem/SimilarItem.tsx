@@ -1,13 +1,8 @@
 import React from 'react';
-
-interface Item {
-  price: number;
-  img: string;
-  link: string;
-}
+import { SimilarItem } from '@interfaces/interfaces';
 
 interface ItemProps {
-  item: Item;
+  item: SimilarItem;
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item }) => {

@@ -41,7 +41,7 @@ const Header: React.FC = () => {
             <Link to='#about'>Про нас</Link>
           </li>
           <li className={styles['menu-link']}>
-            <Link to='/order'>Замовлення</Link>
+            <Link to='/care-conditions'>Умови догляду</Link>
           </li>
         </ul>
         <div className={styles['menu-icon']}>
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
             <Link to='#about'>Про нас</Link>
           </li>
           <li className={styles.side}>
-            <Link to='/order'>Замовлення</Link>
+            <Link to='/care-conditions'>Умови догляду</Link>
           </li>
         </ul>
       </div>

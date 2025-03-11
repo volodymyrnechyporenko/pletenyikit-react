@@ -7,19 +7,7 @@ import 'swiper/css/effect-fade';
 import SimilarItem from '@components/SimilarItem/SimilarItem';
 import styles from './ProductDetails.module.scss'
 import useDetectDataType from '@hooks/useDetectDataType';
-
-interface ProductDetails {
-  id: number;
-  category: string;
-  images: string[];
-  name: string;
-  description: string;
-  dimensions?: string;
-  amount?: string;
-  price: number;
-  similar?: { img: string, price: number, link: string }[];
-  link: string;
-}
+import { ProductDetails } from '@interfaces/interfaces';
 
 const ProductDetailsPage: React.FC = () => {
   const { link } = useParams<{ link: string }>();

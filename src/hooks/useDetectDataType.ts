@@ -4,19 +4,7 @@ import accessories from '@data/accessories';
 import pillows from '@data/pillows';
 import kitchen from '@data/kitchen';
 import { useParams } from 'react-router-dom';
-
-interface ProductDetails {
-  id: number;
-  category: string;
-  images: string[];
-  name: string;
-  description: string;
-  dimensions?: string;
-  amount?: string;
-  price: number;
-  similar?: { img: string, price: number, link: string }[];
-  link: string;
-}
+import { ProductDetails } from '@interfaces/interfaces';
 
 const useDetectDataType = () => {
   const [products, setProducts] = useState<ProductDetails[]>([]);
