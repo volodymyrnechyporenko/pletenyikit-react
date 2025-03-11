@@ -55,6 +55,9 @@
       "@components": [
         "./src/components/*"
       ],
+      "@constants": [
+        "./src/constants/*"
+      ],
       "@data": [
         "./src/data/*"
       ],
@@ -66,9 +69,6 @@
       ],
       "@pages": [
         "./src/pages/*"
-      ],
-      "@router": [
-        "./src/router/*"
       ],
       "@utils": [
         "./src/utils/*"

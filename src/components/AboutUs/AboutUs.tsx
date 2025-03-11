@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AboutUs.module.scss';
-import { aboutUsTitle, aboutUsValues } from '@data/texts';
+import { aboutUsTitle, aboutUsValues } from '@constants/texts';
 
 const AboutUs: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const AboutUs: React.FC = () => {
       </div>
       <div className='article'>
         <div id='bottom_txt' className={styles.txt2col}>
-          {aboutUsValues.map((value) => (
+          {aboutUsValues.map(value => (
             <p key={value}>{value}</p>
           ))}
         </div>

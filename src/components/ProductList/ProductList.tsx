@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { filterCheap, filterExpensive, filterTitle } from '@data/texts';
+import { filterCheap, filterExpensive, filterTitle } from '@constants/texts';
 import styles from './ProductList.module.scss';
 import Product from '@components/Product/Product';
 import useDetectDataType from '@hooks/useDetectDataType';
 
 const ProductList: React.FC = () => {
-  const {category, heading, products, setProducts} = useDetectDataType();
+  const { category, heading, products, setProducts } = useDetectDataType();
 
   const priceLow = () => {
     const sortedProducts = [...products].sort((a, b) => a.price - b.price);
@@ -38,7 +38,7 @@ const ProductList: React.FC = () => {
         {products
           .slice()
           .reverse()
-          .map((product) => (
+          .map(product => (
             <Link key={product.id} to={`/${category}/${product.link}`}>
               <Product product={product} />
             </Link>
