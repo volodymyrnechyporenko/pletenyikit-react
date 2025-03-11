@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
 import SimilarItem from '@components/SimilarItem/SimilarItem';
 import styles from './ProductDetails.module.scss';
 import useDetectDataType from '@hooks/useDetectDataType';
-import { ProductDetails } from '@interfaces/interfaces';
+import { ItemDetails } from '@interfaces/interfaces';
+import ImageCard from '../ImageCard/ImageCard';
 
-const ProductDetailsPage: React.FC = () => {
+const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();
-  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<ItemDetails | null>(null);
 
   const { category, products } = useDetectDataType();
 
@@ -31,22 +28,15 @@ const ProductDetailsPage: React.FC = () => {
       <div className='heading'>
         <h1>{product.category}</h1>
       </div>
-
       <div className='item-all'>
         <div className='item-left'>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            loop
-            effect='fade'>
-            {product.images.map(image => (
-              <SwiperSlide key={image}>
-                <img src={`/src/assets/img/${image}`} alt='' />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className='image-block'>
+            <div className='image-scrollable'>
+              {product.images.map(image => (
+                <ImageCard key={image} image={image} />
+              ))}
+            </div>
+          </div>
         </div>
         <div className='item-right'>
           <h3>{product.name}</h3>
@@ -69,4 +59,4 @@ const ProductDetailsPage: React.FC = () => {
   );
 };
 
-export default ProductDetailsPage;
+export default ProductDetails;

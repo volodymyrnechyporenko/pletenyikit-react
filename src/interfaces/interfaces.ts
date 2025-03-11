@@ -2,7 +2,7 @@ export interface ImagePaths {
   images: string[];
 }
 
-export interface ProductDetails {
+export interface ItemDetails {
   id: number;
   category: string;
   images: string[];
@@ -11,7 +11,7 @@ export interface ProductDetails {
   dimensions?: string;
   amount?: string;
   price: number;
-  similar?: { img: string, price: number, link: string }[];
+  similar?: { img: string; price: number; link: string }[];
   link: string;
 }
 

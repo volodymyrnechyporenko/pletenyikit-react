@@ -4,17 +4,19 @@ import accessories from '@data/accessories';
 import pillows from '@data/pillows';
 import kitchen from '@data/kitchen';
 import { useParams } from 'react-router-dom';
-import { ProductDetails } from '@interfaces/interfaces';
+import { ItemDetails } from '@interfaces/interfaces';
 
 const useDetectDataType = () => {
-  const [products, setProducts] = useState<ProductDetails[]>([]);
+  const [products, setProducts] = useState<ItemDetails[]>([]);
 
   const [heading, setHeading] = useState<string>('');
 
   const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
-    const categoryData: { [key: string]: { data: ProductDetails[]; heading: string } } = {
+    const categoryData: {
+      [key: string]: { data: ItemDetails[]; heading: string };
+    } = {
       toys: { data: toys, heading: 'Іграшки' },
       accessories: { data: accessories, heading: 'Аксесуари' },
       pillows: { data: pillows, heading: 'Подушки' },
@@ -36,8 +38,8 @@ const useDetectDataType = () => {
     category,
     heading,
     products,
-    setProducts
-  }
-}
+    setProducts,
+  };
+};
 
 export default useDetectDataType;

@@ -1,10 +1,7 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
 import { careConditions, careConditionsTitle } from '@constants/texts';
 import useRandomImages from '@hooks/useRandomImages';
+import ImageCard from '../components/ImageCard/ImageCard';
 
 const CareConditions: React.FC = () => {
   const images = useRandomImages();
@@ -17,18 +14,13 @@ const CareConditions: React.FC = () => {
 
       <div className='item-all'>
         <div className='item-left'>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            effect='fade'>
-            {images.map(image => (
-              <SwiperSlide key={image}>
-                <img src={`/src/assets/img/${image}`} alt='' />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className='image-block'>
+            <div className='image-scrollable'>
+              {images.map(image => (
+                <ImageCard key={image} image={image} />
+              ))}
+            </div>
+          </div>
         </div>
         <div className='item-right'>
           <div style={{ marginTop: '-24px' }}>

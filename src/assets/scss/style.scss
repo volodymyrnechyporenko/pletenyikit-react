@@ -233,68 +233,16 @@ p a {
   text-decoration: underline;
 }
 
-.swiper-container {
+.image-block {
   position: relative;
-  z-index: 1;
-  overflow: hidden;
   width: 100%;
-  height: auto;
-  padding: 0;
-  list-style: none;
+  aspect-ratio: 1/1;
 }
 
-.swiper-wrapper {
-  position: relative;
-  z-index: 1;
+.image-scrollable {
   display: flex;
-  box-sizing: content-box;
-  transition-property: transform;
-}
-
-.swiper-slide {
-  position: relative;
-  width: 100%;
-  height: auto;
-  flex-shrink: 0;
-  transition-property: transform;
-}
-
-.swiper-container-android .swiper-slide,
-.swiper-wrapper {
-  transform: translate3d(0, 0, 0);
-}
-
-.swiper-container-pointer-events {
-  touch-action: pan-y;
-}
-
-.swiper-slide img {
-  max-width: 100%;
-}
-
-.swiper-container-autoheight .swiper-wrapper {
-  align-items: flex-start;
-  transition-property: transform, height;
-}
-
-:root {
-  --swiper-navigation-size: 44px;
-}
-
-.swiper-container-fade .swiper-slide {
-  pointer-events: none;
-  transition-property: opacity;
-}
-
-.swiper-container-fade.swiper-container-free-mode .swiper-slide {
-  transition-timing-function: ease-out;
-}
-
-.swiper-container-fade .swiper-slide .swiper-slide {
-  pointer-events: none;
-}
-
-.swiper-container-fade .swiper-slide-active,
-.swiper-container-fade .swiper-slide-active .swiper-slide-active {
-  pointer-events: auto;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 }
