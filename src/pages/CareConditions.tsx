@@ -22,7 +22,6 @@ const CareConditions: React.FC = () => {
             spaceBetween={20}
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000 }}
-            loop
             effect='fade'>
             {images.map(image => (
               <SwiperSlide key={image}>
@@ -32,7 +31,7 @@ const CareConditions: React.FC = () => {
           </Swiper>
         </div>
         <div className='item-right'>
-          <div className='item-text'>
+          <div style={{ marginTop: '-24px' }}>
             {careConditions.map(item => (
               <p key={item}>{item}</p>
             ))}
