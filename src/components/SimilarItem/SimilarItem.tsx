@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface Item {
   price: number;
@@ -9,39 +8,19 @@ interface Item {
 
 interface ItemProps {
   item: Item;
-  itemPath: string;
 }
 
-const ItemComponent: React.FC<ItemProps> = ({ item, itemPath }) => {
-  const navigate = useNavigate();
+const ItemComponent: React.FC<ItemProps> = ({ item }) => {
 
-  const handleClick = () => {
-    navigate({
-      pathname: `/${itemPath}`, // Construct the path
-      search: new URLSearchParams({
-        link: item.link,
-      }).toString(),
-    });
-  };
 
-  try {
-    const imagePath = new URL(`../assets/img/${item.img}`, import.meta.url).href;
+  const imagePath = `/src/assets/img/${item.img}`;
 
-    return (
-      <div className="product" onClick={handleClick}>
-        <div className="product-price">{item.price}</div>
-        <img loading="lazy" src={imagePath} className="product-image" alt="" />
-      </div>
-    );
-  } catch (error) {
-    console.error('Error loading image:', error);
-    return (
-      <div className="product" onClick={handleClick}>
-        <div className="product-price">{item.price}</div>
-        <div className="product-image">Image Not Found</div>
-      </div>
-    );
-  }
+  return (
+    <div className="product">
+      <div className="product-price">{item.price}</div>
+      <img loading="lazy" src={imagePath} className="product-image" alt="" />
+    </div>
+  );
 };
 
 export default ItemComponent;

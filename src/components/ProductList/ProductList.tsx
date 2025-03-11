@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import toys from '@data/toys';
-import accessories from '@data/accessories';
-import pillows from '@data/pillows';
-import kitchen from '@data/kitchen';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { filterCheap, filterExpensive, filterTitle } from '@data/texts';
 import styles from './ProductList.module.scss';
 import Product from '@components/Product/Product';
+import useDetectDataType from '@hooks/useDetectDataType';
 
 interface Product {
   id: number;
@@ -17,42 +14,7 @@ interface Product {
 }
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [heading, setHeading] = useState<string>('');
-
-  const { pathname } = useLocation();
-
-  const category = pathname.split('/')[1];
-
-  useEffect(() => {
-    let data: Product[] = [];
-    let pageHeading: string = '';
-
-    switch (category) {
-      case 'toys':
-        data = toys;
-        pageHeading = 'Іграшки';
-        break;
-      case 'accessories':
-        data = accessories;
-        pageHeading = 'Аксесуари';
-        break;
-      case 'pillows':
-        data = pillows;
-        pageHeading = 'Подушки';
-        break;
-      case 'kitchen':
-        data = kitchen;
-        pageHeading = 'Для кухні';
-        break;
-      default:
-        data = [];
-        pageHeading = 'Товари';
-    }
-
-    setProducts(data);
-    setHeading(pageHeading);
-  }, [category]);
+  const {category, heading, products, setProducts} = useDetectDataType();
 
   const priceLow = () => {
     const sortedProducts = [...products].sort((a, b) => a.price - b.price);
@@ -84,9 +46,9 @@ const ProductList: React.FC = () => {
         {products
           .slice()
           .reverse()
-          .map(product => (
-            <Link to={product.link}>
-              <Product key={product.id} product={product} />
+          .map((product) => (
+            <Link key={product.id} to={`/${category}/${product.link}`}>
+              <Product product={product} />
             </Link>
           ))}
       </div>

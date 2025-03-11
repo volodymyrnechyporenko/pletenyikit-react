@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Footer from './components/Footer/Footer';
 import ProductList from './components/ProductList/ProductList';
 import Main from './pages/Main';
+import ProductDetails from '@components/ProductDetails/ProductDetails';
 
 const App: React.FC = () => {
   return (
@@ -22,11 +23,9 @@ const AppContent: React.FC = () => {
       <ScrollToTop />
       <main>
         <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/accessories' element={<ProductList />} />
-          <Route path='/kitchen' element={<ProductList />} />
-          <Route path='/pillows' element={<ProductList />} />
-          <Route path='/toys' element={<ProductList />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/:category" element={<ProductList />} />
+          <Route path="/:category/:link" element={<ProductDetails />} />
         </Routes>
         <AboutUs />
       </main>
