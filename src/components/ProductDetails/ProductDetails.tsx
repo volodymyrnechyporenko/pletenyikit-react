@@ -5,12 +5,15 @@ import styles from './ProductDetails.module.scss';
 import useDetectDataType from '@hooks/useDetectDataType';
 import { ItemDetails } from '@interfaces/interfaces';
 import ImageCard from '../ImageCard/ImageCard';
+import useScrollItemsOnClick from '@hooks/useScrollItemsOnClick';
 
 const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();
   const [product, setProduct] = useState<ItemDetails | null>(null);
 
   const { category, products } = useDetectDataType();
+
+  const { containerRef, handleCardClick } = useScrollItemsOnClick();
 
   useEffect(() => {
     if (link) {
@@ -31,9 +34,13 @@ const ProductDetails: React.FC = () => {
       <div className='item-all'>
         <div className='item-left'>
           <div className='image-block'>
-            <div className='image-scrollable'>
-              {product.images.map(image => (
-                <ImageCard key={image} image={image} />
+            <div className='image-scrollable' ref={containerRef}>
+              {product.images.map((image, index) => (
+                <ImageCard
+                  key={image}
+                  image={image}
+                  handleClick={() => handleCardClick(index)}
+                />
               ))}
             </div>
           </div>

@@ -1,8 +1,14 @@
 import styles from './ImageCard.module.scss';
 
-const ImageCard = ({ image }: { image: string }) => {
+const ImageCard = ({
+  image,
+  handleClick,
+}: {
+  image: string;
+  handleClick: () => void;
+}) => {
   return (
-    <div className={styles['image-container']}>
+    <div className={styles['image-container']} onClick={handleClick}>
       <img src={`/src/assets/img/${image}`} alt='' />
     </div>
   );
