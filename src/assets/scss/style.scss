@@ -232,18 +232,3 @@ a {
 p a {
   text-decoration: underline;
 }
-
-.image-block {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-}
-
-.image-scrollable {
-  display: flex;
-  height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
