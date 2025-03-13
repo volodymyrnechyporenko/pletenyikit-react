@@ -7,6 +7,8 @@ import styles from './Header.module.scss';
 import useScrollToAnchor from '@hooks/useScrollToAnchor';
 import { leftNavigation, rightNavigation } from '@constants/navigation';
 
+const PADDING_TOP = 16;
+
 const Header: React.FC = () => {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -21,7 +23,7 @@ const Header: React.FC = () => {
     setHeaderHeight(headerRef.current?.clientHeight ?? 0);
   }, []);
 
-  useScrollToAnchor(headerHeight);
+  useScrollToAnchor(headerHeight + PADDING_TOP);
 
   const icon = isBurgerActive ? faTimes : faBars;
 
