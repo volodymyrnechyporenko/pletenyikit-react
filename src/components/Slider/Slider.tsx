@@ -3,17 +3,17 @@ import styles from './Slider.module.scss';
 import SliderCard from './SliderCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import useDetectSliderSwipe from '../../hooks/useDetectSliderSwipe';
 
 interface SliderProps {
   images: string[];
+  currentIndex: number;
+  setCurrentIndex: Dispatch<SetStateAction<number>>;
 }
 
-const Slider = ({ images }: SliderProps) => {
+const Slider = ({ images, currentIndex, setCurrentIndex }: SliderProps) => {
   const { containerRef, handleCardClick } = useScrollItemsOnClick();
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleLeftButtonClick = () => {
     setCurrentIndex(prevIndex => Math.max(0, prevIndex - 1));
