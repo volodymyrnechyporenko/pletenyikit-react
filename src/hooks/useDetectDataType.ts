@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import toys from '@data/toys';
-import accessories from '@data/accessories';
-import pillows from '@data/pillows';
-import kitchen from '@data/kitchen';
+import toys from '@data/toys.json';
+import accessories from '@data/accessories.json';
+import pillows from '@data/pillows.json';
+import kitchen from '@data/kitchen.json';
 import { useParams } from 'react-router-dom';
 import { ItemDetails } from '@interfaces/interfaces';
 
@@ -17,10 +17,19 @@ const useDetectDataType = () => {
     const categoryData: {
       [key: string]: { data: ItemDetails[]; heading: string };
     } = {
-      toys: { data: toys, heading: 'Іграшки' },
-      accessories: { data: accessories, heading: 'Аксесуари' },
-      pillows: { data: pillows, heading: 'Подушки' },
-      kitchen: { data: kitchen, heading: 'Для кухні' },
+      toys: { data: JSON.parse(JSON.stringify(toys)), heading: 'Іграшки' },
+      accessories: {
+        data: JSON.parse(JSON.stringify(accessories)),
+        heading: 'Аксесуари',
+      },
+      pillows: {
+        data: JSON.parse(JSON.stringify(pillows)),
+        heading: 'Подушки',
+      },
+      kitchen: {
+        data: JSON.parse(JSON.stringify(kitchen)),
+        heading: 'Для кухні',
+      },
     };
 
     const selectedCategory = categoryData[category as string];
