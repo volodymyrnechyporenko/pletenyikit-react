@@ -3,53 +3,94 @@ import styles from './Slider.module.scss';
 import SliderCard from './SliderCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dispatch, SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
 import useDetectSliderSwipe from '../../hooks/useDetectSliderSwipe';
+import { useParams } from 'react-router-dom';
 
 interface SliderProps {
   images: string[];
-  currentIndex: number;
-  setCurrentIndex: Dispatch<SetStateAction<number>>;
 }
 
-const Slider = ({ images, currentIndex, setCurrentIndex }: SliderProps) => {
+const Slider = ({ images }: SliderProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [routeChanged, setRouteChanged] = useState(false);
+
+  const { link } = useParams();
+
   const { containerRef, handleCardClick } = useScrollItemsOnClick();
 
-  const handleLeftButtonClick = () => {
-    setCurrentIndex(prevIndex => Math.max(0, prevIndex - 1));
-    handleCardClick(currentIndex - 1, 'left');
+  useDetectSliderSwipe(containerRef, setCurrentIndex, routeChanged);
+
+  const handleLeftButtonClick = (index?: number) => {
+    const newIndex =
+      index !== undefined ? index : Math.max(0, currentIndex - 1);
+    setCurrentIndex(newIndex);
+    handleCardClick(newIndex);
   };
 
-  const handleRightButtonClick = () => {
-    setCurrentIndex(prevIndex => Math.min(images.length - 1, prevIndex + 1));
-    handleCardClick(currentIndex + 1, 'right');
+  const handleRightButtonClick = (index?: number) => {
+    const newIndex =
+      index !== undefined
+        ? index
+        : Math.min(images.length - 1, currentIndex + 1);
+    setCurrentIndex(newIndex);
+    handleCardClick(newIndex);
   };
 
-  useDetectSliderSwipe(containerRef, setCurrentIndex);
+  useEffect(() => {
+    setCurrentIndex(0);
+    setRouteChanged(true);
+
+    if (containerRef.current) {
+      containerRef.current.scrollLeft = 0;
+    }
+
+    const timer = setTimeout(() => {
+      setRouteChanged(false);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [containerRef, link]);
 
   return (
     <div className={styles['slider-container']}>
       {currentIndex > 0 && (
         <button
+          title='scroll-to-left'
           className={styles['slider-to-left-btn']}
-          onClick={handleLeftButtonClick}>
+          onClick={() => handleLeftButtonClick()}>
           <FontAwesomeIcon icon={faAngleLeft} size='2x' />
         </button>
       )}
       {currentIndex < images.length - 1 && (
         <button
+          title='scroll-to-right'
           className={styles['slider-to-right-btn']}
-          onClick={handleRightButtonClick}>
+          onClick={() => handleRightButtonClick()}>
           <FontAwesomeIcon icon={faAngleRight} size='2x' />
         </button>
       )}
-      <div className={styles['slider-scrollable-block']} ref={containerRef}>
+      <div className={styles['slider-pagination-container']}>
         {images.map((image, index) => (
-          <SliderCard
-            key={image}
-            image={image}
-            handleClick={() => handleCardClick(index)}
-          />
+          <button
+            title={`scroll-to-item-${index}`}
+            key={`scroll-to-${image}`}
+            className={
+              styles[
+                `slider-pagination-btn${currentIndex === index ? '-active' : ''}`
+              ]
+            }
+            onClick={() => {
+              setCurrentIndex(index);
+              handleCardClick(index);
+            }}>
+            &#x2022;
+          </button>
+        ))}
+      </div>
+      <div className={styles['slider-scrollable-block']} ref={containerRef}>
+        {images.map(image => (
+          <SliderCard key={image} image={image} />
         ))}
       </div>
     </div>

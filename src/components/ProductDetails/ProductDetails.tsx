@@ -10,8 +10,6 @@ const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();
   const [product, setProduct] = useState<ItemDetails | null>(null);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   const { category, products } = useDetectDataType();
 
   useEffect(() => {
@@ -19,7 +17,6 @@ const ProductDetails: React.FC = () => {
       const foundProduct = products.find(p => p.link === link);
       if (foundProduct) {
         setProduct(foundProduct);
-        setCurrentIndex(0);
       }
     }
   }, [link, products]);
@@ -33,11 +30,7 @@ const ProductDetails: React.FC = () => {
       </div>
       <div className='item-all'>
         <div className='item-left'>
-          <Slider
-            images={product.images}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-          />
+          <Slider images={product.images} />
         </div>
         <div className='item-right'>
           <h3>{product.name}</h3>

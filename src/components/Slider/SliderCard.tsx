@@ -2,12 +2,11 @@ import styles from './Slider.module.scss';
 
 interface SliderCardProps {
   image: string;
-  handleClick: () => void;
 }
 
-const SliderCard = ({ image, handleClick }: SliderCardProps) => {
+const SliderCard = ({ image }: SliderCardProps) => {
   return (
-    <div className={styles['slider-card']} onClick={handleClick}>
+    <div className={styles['slider-card']}>
       <img src={`/src/assets/img/${image}`} alt='' />
     </div>
   );
