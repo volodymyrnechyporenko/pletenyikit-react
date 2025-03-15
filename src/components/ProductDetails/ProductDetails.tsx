@@ -33,7 +33,7 @@ const ProductDetails: React.FC = () => {
           <Slider images={product.images} />
         </div>
         <div className='item-right'>
-          <h3>{product.name}</h3>
+          <h2>{product.name}</h2>
           <p>{product.description}</p>
           <p>{product.dimensions}</p>
           <p>{product.amount}</p>

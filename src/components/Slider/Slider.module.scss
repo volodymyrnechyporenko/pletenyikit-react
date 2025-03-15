@@ -94,4 +94,11 @@
   color: rgb(203 172 106);
 }
 
+@media screen and (width <= 820px) {
+  .slider-pagination-container {
+    display: none;
+  }
+
+}
+
 

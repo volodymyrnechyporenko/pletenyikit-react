@@ -14,16 +14,9 @@ const Footer: React.FC = () => {
           <h3>Плетений КіТ</h3>
           <h4>Найгарніша реінкарнація пряжі</h4>
           <p>
-            Наші вироби можна замовити тут, у фейсбук, вайбері чи телеграмі,
-            також Плетений КіТ доступний на платформі
-            <a
-              href='https://pletenyikit.crafta.ua/'
-              target='_blank'
-              rel='noopener noreferrer'>
-              Crafta.ua
-            </a>
-            . Ви отримаєте відповіді на можливі питання та вичерпну інформацію
-            про вироби.
+            Наші вироби можна замовити тут, у фейсбук, вайбері чи інстаграмі. Ви
+            отримаєте відповіді на можливі питання та вичерпну інформацію про
+            вироби.
           </p>
           <p>
             До замовлення ми додаємо стильні умови догляду, візитки та крафтові
@@ -32,7 +25,8 @@ const Footer: React.FC = () => {
             подарунок.
           </p>
           <p>
-            Доступні опції доставки: Нова пошта, Укрпошта, Justin чи самовивіз.
+            Доступні опції доставки: Нова пошта, Укрпошта, Meest Express чи
+            самовивіз.
           </p>
         </div>
         <div className={styles['foot-right']}>
@@ -42,13 +36,16 @@ const Footer: React.FC = () => {
             10:00 до 20:00):
           </p>
           <p>
-            <a href='tel:+380630546382'>+38 063 054 63 82</a>
+            <a href='tel:+380630546382' aria-label='pletenyikit-phone'>
+              +38 063 054 63 82
+            </a>
           </p>
           <p>або у соціальних мережах:</p>
           <p>
             <a
               href='https://www.facebook.com/PletenyiKiT'
               target='_blank'
+              aria-label='pletenyikit-on-facebook'
               rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faFacebookSquare} size='3x' />
             </a>
@@ -56,19 +53,12 @@ const Footer: React.FC = () => {
             <a
               href='https://www.instagram.com/pletenyi_kit/'
               target='_blank'
+              aria-label='pletenyikit-on-instagram'
               rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faInstagram} size='3x' />
             </a>
           </p>
           <p>чи через платформу Crafta.ua:</p>
-          <p>
-            <a
-              href='https://pletenyikit.crafta.ua/'
-              target='_blank'
-              rel='noopener noreferrer'>
-              pletenyikit.crafta.ua
-            </a>
-          </p>
           <p>© PletenyiKit.</p>
         </div>
       </div>
