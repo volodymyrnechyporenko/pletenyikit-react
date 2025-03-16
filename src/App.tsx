@@ -1,20 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import Header from './components/Header/Header';
 import AboutUs from './components/AboutUs/AboutUs';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Footer from './components/Footer/Footer';
-import ProductList from './components/ProductList/ProductList';
-import Main from './pages/Main';
-import ProductDetails from '@components/ProductDetails/ProductDetails';
 import useScrollPageToTop from '@hooks/useScrollPageToTop';
-import CareConditions from '@pages/CareConditions';
+import { router, routes } from './router/router';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <RouterProvider routes={routes} router={router}>
       <AppContent />
-    </Router>
+    </RouterProvider>
   );
 };
 
@@ -26,12 +23,6 @@ const AppContent: React.FC = () => {
       <Header />
       <ScrollToTop />
       <main>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/:category" element={<ProductList />} />
-          <Route path="/:category/:link" element={<ProductDetails />} />
-          <Route path="care-conditions" element={<CareConditions />} />
-        </Routes>
         <AboutUs />
       </main>
       <Footer />
