@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import toysImage from '@assets/img/zakladka-lysychka-01.jpg';
-import accessoriesImage from '@assets/img/mitenky-kotyky-zhovti-pukhnasti-01.jpg';
-import pillowsImage from '@assets/img/zhovtyi-pes-blakytnyi-metelyk-01.jpg';
-import kitchenImage from '@assets/img/biriuzovi-kotyky-01.jpg';
 
 const HomePage: React.FC = () => (
   <>
@@ -20,14 +16,18 @@ const HomePage: React.FC = () => (
       <div className='product'>
         <Link to='/toys'>
           <div className='category-title'>Іграшки</div>
-          <img src={toysImage} className='product-image toys' alt='' />
+          <img
+            src={'/img/zakladka-lysychka-01.jpg'}
+            className='product-image toys'
+            alt=''
+          />
         </Link>
       </div>
       <div className='product'>
         <Link to='/accessories'>
           <div className='category-title'>Одяг</div>
           <img
-            src={accessoriesImage}
+            src={'/img/mitenky-kotyky-zhovti-pukhnasti-01.jpg'}
             className='product-image accessories'
             alt=''
           />
@@ -36,13 +36,21 @@ const HomePage: React.FC = () => (
       <div className='product'>
         <Link to='/pillows'>
           <div className='category-title'>Подушки</div>
-          <img src={pillowsImage} className='product-image pillows' alt='' />
+          <img
+            src={'/img/zhovtyi-pes-blakytnyi-metelyk-01.jpg'}
+            className='product-image pillows'
+            alt=''
+          />
         </Link>
       </div>
       <div className='product'>
         <Link to='/kitchen'>
           <div className='category-title'>Для кухні</div>
-          <img src={kitchenImage} className='product-image kitchen' alt='' />
+          <img
+            src={'/img/biriuzovi-kotyky-01.jpg'}
+            className='product-image kitchen'
+            alt=''
+          />
         </Link>
       </div>
     </div>

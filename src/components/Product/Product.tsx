@@ -18,7 +18,7 @@ const Product: React.FC<ProductProps> = ({ product }) => (
     <div className='product-title'>{product.name}</div>
     <img
       loading='lazy'
-      src={`/src/assets/img/${product.images[0]}`}
+      src={`/img/${product.images[0]}`}
       className='product-image'
       alt=''
     />

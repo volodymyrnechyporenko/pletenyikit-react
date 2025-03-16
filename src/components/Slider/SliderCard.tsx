@@ -7,7 +7,7 @@ interface SliderCardProps {
 const SliderCard = ({ image }: SliderCardProps) => {
   return (
     <div className={styles['slider-card']}>
-      <img src={`/src/assets/img/${image}`} alt='' />
+      <img src={`/img/${image}`} alt='' />
     </div>
   );
 };

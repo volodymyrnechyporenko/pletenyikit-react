@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import logo from '@assets/img/PletenyiKit_logo_round.png';
+import logo from '/img/PletenyiKit_logo_round.png';
 import styles from './Header.module.scss';
 import useScrollToAnchor from '@hooks/useScrollToAnchor';
 import { leftNavigation, rightNavigation } from '@constants/navigation';

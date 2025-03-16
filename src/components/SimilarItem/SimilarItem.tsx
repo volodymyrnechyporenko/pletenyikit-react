@@ -6,14 +6,12 @@ interface ItemProps {
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item }) => {
-
-
-  const imagePath = `/src/assets/img/${item.img}`;
+  const imagePath = `/img/${item.img}`;
 
   return (
-    <div className="product">
-      <div className="product-price">{item.price}</div>
-      <img loading="lazy" src={imagePath} className="product-image" alt="" />
+    <div className='product'>
+      <div className='product-price'>{item.price}</div>
+      <img loading='lazy' src={imagePath} className='product-image' alt='' />
     </div>
   );
 };
