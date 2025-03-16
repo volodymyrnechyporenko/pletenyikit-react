@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 import useScrollToAnchor from '@hooks/useScrollToAnchor';
 import { leftNavigation, rightNavigation } from '@constants/navigation';
 
-const PADDING_TOP = 16;
+const PADDING_TOP = 24;
 
 const Header: React.FC = () => {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
