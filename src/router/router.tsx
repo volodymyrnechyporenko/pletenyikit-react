@@ -1,4 +1,8 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Outlet,
+  ScrollRestoration,
+} from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 
 export const routes = createBrowserRouter([
@@ -7,6 +11,7 @@ export const routes = createBrowserRouter([
     element: (
       <Layout>
         <Outlet />
+        <ScrollRestoration />
       </Layout>
     ),
     children: [

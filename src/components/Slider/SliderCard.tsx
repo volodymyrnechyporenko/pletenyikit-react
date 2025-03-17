@@ -4,12 +4,10 @@ interface SliderCardProps {
   image: string;
 }
 
-const SliderCard = ({ image }: SliderCardProps) => {
-  return (
-    <div className={styles['slider-card']}>
-      <img src={`/img/${image}`} alt='' />
-    </div>
-  );
-};
+const SliderCard = ({ image }: SliderCardProps) => (
+  <div className={styles['slider-card']}>
+    <img src={`/img/${image}`} alt='' />
+  </div>
+);
 
 export default SliderCard;
