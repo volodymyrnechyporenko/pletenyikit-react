@@ -1,4 +1,3 @@
-import useScrollItemsOnClick from '@hooks/useScrollItemsOnClick';
 import styles from './Slider.module.scss';
 import SliderCard from './SliderCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import useDetectSliderSwipe from '../../hooks/useDetectSliderSwipe';
 import { useParams } from 'react-router-dom';
+import useScrollItemsOnClick from '../../hooks/useScrollItemsOnClick';
 
 interface SliderProps {
   images: string[];

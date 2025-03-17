@@ -1,4 +1,4 @@
-export const careConditions = [
+export const careConditionsImages = [
   'care-conditions-01.jpeg',
   'care-conditions-02.jpeg',
   'care-conditions-03.jpeg',

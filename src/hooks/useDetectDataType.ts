@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import toys from '@data/toys.json';
-import accessories from '@data/accessories.json';
-import pillows from '@data/pillows.json';
-import kitchen from '@data/kitchen.json';
+import toys from './../data/toys.json';
+import accessories from './../data/accessories.json';
+import pillows from './../data/pillows.json';
+import kitchen from './../data/kitchen.json';
 import { useParams } from 'react-router-dom';
-import { ItemDetails } from '@interfaces/interfaces';
+import { ItemDetails } from '../interfaces/interfaces';
 
 const useDetectDataType = () => {
   const [products, setProducts] = useState<ItemDetails[]>([]);

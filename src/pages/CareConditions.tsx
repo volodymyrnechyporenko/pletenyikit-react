@@ -1,7 +1,7 @@
 import React from 'react';
-import { careConditions, careConditionsTitle } from '@constants/texts';
-import useRandomImages from '@hooks/useRandomImages';
 import Slider from '../components/Slider/Slider';
+import useRandomImages from '../hooks/useRandomImages';
+import { careConditions, careConditionsTitle } from '../constants/texts';
 
 const CareConditions: React.FC = () => {
   const images = useRandomImages();

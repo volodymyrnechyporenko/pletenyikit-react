@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { shuffleArray } from '@utils/shuffleArray';
-import { careConditions } from '../constants/conditions';
+import { shuffleArray } from '../utils/shuffleArray';
+import { careConditionsImages } from '../constants/conditions';
 
 const useRandomImages = () => {
   const [imageSet, setImageSet] = useState<string[]>([]);
 
   useEffect(() => {
-    setImageSet(shuffleArray(careConditions));
+    setImageSet(shuffleArray(careConditionsImages));
   }, []);
 
   return imageSet;

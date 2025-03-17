@@ -2,10 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import styles from './ScrollToTop.module.scss';
-import useArrowToScrollToTop from '@hooks/useArrowToScrollToTop';
+import useArrowToScrollToTop from '../../hooks/useArrowToScrollToTop';
 
 const ScrollToTop: React.FC = () => {
-  const {isVisible, scrollTop} = useArrowToScrollToTop();
+  const { isVisible, scrollTop } = useArrowToScrollToTop();
 
   return (
     <div

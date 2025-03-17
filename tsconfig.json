@@ -44,39 +44,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "paths": {
-      "@*": [
-        "./src/*"
-      ],
-      "@assets": [
-        "./src/assets/*"
-      ],
-      "@components": [
-        "./src/components/*"
-      ],
-      "@constants": [
-        "./src/constants/*"
-      ],
-      "@data": [
-        "./src/data/*"
-      ],
-      "@hooks": [
-        "./src/hooks/*"
-      ],
-      "@interfaces": [
-        "./src/interfaces/*"
-      ],
-      "@pages": [
-        "./src/pages/*"
-      ],
-      "@router": [
-        "./src/router/*"
-      ],
-      "@utils": [
-        "./src/utils/*"
-      ]
-    }
+    "noEmit": true
   },
   "references": [
     {

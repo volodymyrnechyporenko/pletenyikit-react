@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimilarItem } from '@interfaces/interfaces';
+import { SimilarItem } from '../../interfaces/interfaces';
 
 interface ItemProps {
   item: SimilarItem;

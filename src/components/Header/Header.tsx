@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import logo from '/img/PletenyiKit_logo_round.png';
 import styles from './Header.module.scss';
-import useScrollToAnchor from '@hooks/useScrollToAnchor';
-import { leftNavigation, rightNavigation } from '@constants/navigation';
+import { leftNavigation, rightNavigation } from '../../constants/navigation';
+import useScrollToAnchor from '../../hooks/useScrollToAnchor';
 
 const PADDING_TOP = 24;
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import SimilarItem from '@components/SimilarItem/SimilarItem';
 import styles from './ProductDetails.module.scss';
-import useDetectDataType from '@hooks/useDetectDataType';
-import { ItemDetails } from '@interfaces/interfaces';
 import Slider from '../Slider/Slider';
+import SimilarItem from '../SimilarItem/SimilarItem';
+import useDetectDataType from '../../hooks/useDetectDataType';
+import { ItemDetails } from '../../interfaces/interfaces';
 
 const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();

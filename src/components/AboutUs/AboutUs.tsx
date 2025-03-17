@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AboutUs.module.scss';
-import { aboutUsTitle, aboutUsValues } from '@constants/texts';
+import { aboutUsTitle, aboutUsValues } from '../../constants/texts';
 
 const AboutUs: React.FC = () => {
   return (
