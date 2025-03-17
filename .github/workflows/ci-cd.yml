@@ -29,10 +29,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          branch: main
-          folder: dist
