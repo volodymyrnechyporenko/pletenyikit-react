@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => (
   <>
-    <div className='heading'>
+    <div id='updated-2025-03-21' className='heading'>
       <h1>Плетений КіТ</h1>
       <h2>
         Найгарніша реінкарнація пряжі!
