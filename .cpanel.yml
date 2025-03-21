@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/pletenyi/repository/
+    - export DEPLOYPATH=/home2/pletenyi/public_html/
     - /bin/cp -R dist $DEPLOYPATH
