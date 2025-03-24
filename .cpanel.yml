@@ -1,8 +1,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/pletenyi/public_html/
-    - /bin/cp -R dist/assets $DEPLOYPATH
-    - /bin/cp -R dist/img $DEPLOYPATH
-    - /bin/cp dist/google39dd57fee9d6936d.html $DEPLOYPATH
-    - /bin/cp dist/index.html $DEPLOYPATH
-    - /bin/cp dist/sitemap.xml $DEPLOYPATH
+    - /bin/cp -R dist/* $DEPLOYPATH
