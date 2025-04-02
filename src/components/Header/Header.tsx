@@ -21,9 +21,9 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setHeaderHeight(headerRef.current?.clientHeight ?? 0);
-  }, []);
+  }, [headerHeight]);
 
-  useScrollToAnchor(headerHeight + PADDING_TOP);
+  const { scrollToAnchor } = useScrollToAnchor(headerHeight + PADDING_TOP);
 
   const icon = isBurgerActive ? faTimes : faBars;
 
@@ -63,11 +63,20 @@ const Header: React.FC = () => {
         className={`${styles.sidebar} ${isBurgerActive ? styles.active : ''}`}
         onClick={toggle}>
         <ul>
-          {[...leftNavigation, ...rightNavigation].map(item => (
-            <li key={item.path} className={styles.side}>
-              <Link to={item.path}>{item.name}</Link>
-            </li>
-          ))}
+          {[...leftNavigation, ...rightNavigation].map(item =>
+            item.path === '#about' ? (
+              <li
+                key={item.path}
+                className={styles.side}
+                onClick={() => scrollToAnchor(item.path)}>
+                {item.name}
+              </li>
+            ) : (
+              <li key={item.path} className={styles.side}>
+                <Link to={item.path}>{item.name}</Link>
+              </li>
+            ),
+          )}
         </ul>
       </div>
     </header>
