@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BUILD_DATE } from '../constants/build-info';
 
 const HomePage: React.FC = () => (
   <>
-    <div id={`updated-${import.meta.env.BUILD_DATE}`} className='heading'>
+    <div id={`updated-${BUILD_DATE}`} className='heading'>
       <h1>Плетений КіТ</h1>
       <h2>
         Найгарніша реінкарнація пряжі!
