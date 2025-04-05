@@ -58,7 +58,6 @@ const Footer: React.FC = () => {
               <FontAwesomeIcon icon={faInstagram} size='3x' />
             </a>
           </p>
-          <p>чи через платформу Crafta.ua:</p>
           <p>© PletenyiKit.</p>
         </div>
       </div>
