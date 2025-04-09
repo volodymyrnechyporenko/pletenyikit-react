@@ -17,6 +17,7 @@ function generateSitemap() {
     { url: '/kitchen', changefreq: 'daily', priority: 1.0 },
     { url: '/pillows', changefreq: 'daily', priority: 1.0 },
     { url: '/toys', changefreq: 'daily', priority: 1.0 },
+    { url: '/about-pletenyi-kit', changefreq: 'daily', priority: 1.0 },
     { url: '/care-conditions', changefreq: 'weekly', priority: 0.8 },
     ...accessories.map(item => ({
       url: '/accessories/' + item.link,
