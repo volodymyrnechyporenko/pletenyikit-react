@@ -5,7 +5,8 @@ import { aboutUsTitle, aboutUsValues } from '../../constants/texts';
 const AboutUs: React.FC = () => {
   return (
     <>
-      <div id='about' className='heading'>
+      <div className='heading'>
+        <h1>Про нас</h1>
         <h2>{aboutUsTitle}</h2>
       </div>
       <div className='article'>

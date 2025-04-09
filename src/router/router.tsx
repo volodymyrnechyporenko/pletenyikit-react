@@ -41,6 +41,13 @@ export const routes = createBrowserRouter([
         },
       },
       {
+        path: '/about-pletenyi-kit',
+        lazy: async () => {
+          const Component = await import('../components/AboutUs/AboutUs');
+          return { Component: Component.default };
+        },
+      },
+      {
         path: '/care-conditions',
         lazy: async () => {
           const Component = await import('../pages/CareConditions');

@@ -1,29 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import logo from '/img/PletenyiKit_logo_round.png';
 import styles from './Header.module.scss';
 import { leftNavigation, rightNavigation } from '../../constants/navigation';
-import useScrollToAnchor from '../../hooks/useScrollToAnchor';
-
-const PADDING_TOP = 24;
 
 const Header: React.FC = () => {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(0);
 
   const headerRef = useRef<HTMLDivElement>(null);
 
   const toggle = () => {
     setIsBurgerActive(!isBurgerActive);
   };
-
-  useEffect(() => {
-    setHeaderHeight(headerRef.current?.clientHeight ?? 0);
-  }, []);
-
-  useScrollToAnchor(headerHeight + PADDING_TOP);
 
   const icon = isBurgerActive ? faTimes : faBars;
 

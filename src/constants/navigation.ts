@@ -19,7 +19,7 @@ export const rightNavigation = [
     name: 'Для кухні',
   },
   {
-    path: '#about',
+    path: '/about-pletenyi-kit',
     name: 'Про нас',
   },
   {
