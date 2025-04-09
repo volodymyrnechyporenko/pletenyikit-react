@@ -28,6 +28,11 @@
     <priority>1</priority>
   </url>
   <url>
+    <url>https://pletenyikit.com/about-pletenyi-kit</url>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
     <url>https://pletenyikit.com/care-conditions</url>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
