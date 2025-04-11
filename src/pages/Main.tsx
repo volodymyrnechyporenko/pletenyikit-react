@@ -38,7 +38,7 @@ const HomePage: React.FC = () => (
         <Link to='/pillows'>
           <div className='category-title'>Подушки</div>
           <img
-            src={'/img/zhovtyi-pes-blakytnyi-metelyk-01.jpg'}
+            src={'/img/kit-zhovta-smuzhka-01.jpg'}
             className='product-image pillows'
             alt=''
           />

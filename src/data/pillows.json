@@ -16,7 +16,7 @@
       "minimalistychnyi_08.jpg"
     ],
     "price": 550,
-    "link": "minimalizm_lapky",
+    "link": "minimalizm-lapky",
     "category": "Подушки"
   },
   {
@@ -36,7 +36,7 @@
       "synio-bezhevyi_melanzh_08.jpg"
     ],
     "price": 650,
-    "link": "synio_bezhevyi_melanzh",
+    "link": "synio-bezhevyi-melanzh",
     "category": "Подушки"
   },
   {
@@ -55,7 +55,7 @@
       "rodynne_derevo_08.jpg"
     ],
     "price": 700,
-    "link": "rodynne_derevo",
+    "link": "rodynne-derevo",
     "category": "Подушки"
   },
   {
@@ -70,7 +70,7 @@
       "sira_melanzheva_myshka_04.jpg"
     ],
     "price": 400,
-    "link": "sira_melanzheva_myshka",
+    "link": "sira-melanzheva-myshka",
     "category": "Подушки"
   },
   {
@@ -86,13 +86,13 @@
       "metelyky_04.jpg"
     ],
     "price": 400,
-    "link": "metelyk_syni_smuzhky",
+    "link": "metelyk-syni-smuzhky",
     "category": "Подушки",
     "similar": [
       {
         "img": "metelyky_05.jpg",
         "price": 400,
-        "link": "metelyk_chervoni_smuzhky"
+        "link": "metelyk-chervoni-smuzhky"
       }
     ]
   },
@@ -109,13 +109,13 @@
       "metelyky_08.jpg"
     ],
     "price": 400,
-    "link": "metelyk_chervoni_smuzhky",
+    "link": "metelyk-chervoni-smuzhky",
     "category": "Подушки",
     "similar": [
       {
         "img": "metelyky_01.jpg",
         "price": 400,
-        "link": "metelyk_syni_smuzhky"
+        "link": "metelyk-syni-smuzhky"
       }
     ]
   },
@@ -132,7 +132,7 @@
       "synio_rozhevyi_kyt_05.jpg"
     ],
     "price": 350,
-    "link": "synio_rozhevyi_kyt",
+    "link": "synio-rozhevyi-kyt",
     "category": "Подушки"
   },
   {
@@ -146,7 +146,7 @@
       "rozhevyi_zaichyk_04.jpg"
     ],
     "price": 600,
-    "link": "rozhevyi_zaichyk",
+    "link": "rozhevyi-zaichyk",
     "category": "Подушки"
   },
   {
@@ -163,18 +163,18 @@
       "biryuzova_zirka_05.jpg"
     ],
     "price": 500,
-    "link": "biryuzova_zirka",
+    "link": "biryuzova-zirka",
     "category": "Подушки",
     "similar": [
       {
         "img": "buzkova_zirka_01.jpg",
         "price": 500,
-        "link": "buzkova_zirka"
+        "link": "buzkova-zirka"
       },
       {
         "img": "bila_zirka_01.jpg",
         "price": 500,
-        "link": "bila_zirka"
+        "link": "bila-zirka"
       }
     ]
   },
@@ -191,18 +191,18 @@
       "buzkova_zirka_04.jpg"
     ],
     "price": 500,
-    "link": "buzkova_zirka",
+    "link": "buzkova-zirka",
     "category": "Подушки",
     "similar": [
       {
         "img": "biryuzova_zirka_01.jpg",
         "price": 500,
-        "link": "biryuzova_zirka"
+        "link": "biryuzova-zirka"
       },
       {
         "img": "bila_zirka_01.jpg",
         "price": 500,
-        "link": "bila_zirka"
+        "link": "bila-zirka"
       }
     ]
   },
@@ -220,38 +220,20 @@
       "bila_zirka_05.jpg"
     ],
     "price": 500,
-    "link": "bila_zirka",
+    "link": "bila-zirka",
     "category": "Подушки",
     "similar": [
       {
         "img": "biryuzova_zirka_01.jpg",
         "price": 500,
-        "link": "biryuzova_zirka"
+        "link": "biryuzova-zirka"
       },
       {
         "img": "buzkova_zirka_01.jpg",
         "price": 500,
-        "link": "buzkova_zirka"
+        "link": "buzkova-zirka"
       }
     ]
-  },
-  {
-    "id": 39,
-    "name": "Жовтий пес з блакитним метеликом",
-    "description": "Любите песиків? Тоді цей м‘якенький та жовтенький песоПодух для вас. Ручне плетіння і пошиття, приємна неколюча пряжа, гіпоалергенний наповнювач. Песик-подушка має милу вишиту посмішку, рухомі вушка, лапки та метелик",
-    "materials": "Матеріали: акрил (пряжа), холофайбер (наповнювач).",
-    "dimensions": "Розмір: 36/27/12см без урахування лап і хвоста.",
-    "images": [
-      "zhovtyi-pes-blakytnyi-metelyk-01.jpg",
-      "zhovtyi-pes-blakytnyi-metelyk-02.jpg",
-      "zhovtyi-pes-blakytnyi-metelyk-03.jpg",
-      "zhovtyi-pes-blakytnyi-metelyk-04.jpg",
-      "zhovtyi-pes-blakytnyi-metelyk-05.jpg",
-      "zhovtyi-pes-blakytnyi-metelyk-06.jpg"
-    ],
-    "price": 750,
-    "link": "zhovtyi-pes-blakytnyi-metelyk",
-    "category": "Подушки"
   },
   {
     "id": 40,
