@@ -87,7 +87,9 @@ main {
 
 .product-image {
   position: absolute;
+  z-index: 1;
   max-width: 100%;
+  transition: opacity 0.3s ease-in-out;
   vertical-align: bottom;
 }
 
@@ -98,7 +100,7 @@ main {
   transition: all .4s ease-in-out;
 }
 
-.product, #about, .article, .item-all {
+#about, .article, .item-all {
   animation: goods-cat ease 1s;
 }
 

@@ -1,0 +1,1 @@
+import{r as e,u as n}from"./index-CQLjXX_H.js";const u=()=>{const[t,o]=e.useState(!0),s=n();return e.useEffect(()=>{const r=setTimeout(()=>{o(!1)},500);return()=>clearTimeout(r)},[s.pathname]),t};export{u};

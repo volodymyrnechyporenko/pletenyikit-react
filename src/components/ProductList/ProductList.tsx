@@ -27,7 +27,6 @@ const ProductList: React.FC = () => {
       <div className='heading'>
         <h1>{heading}</h1>
       </div>
-
       <div className={styles['filter-heading']}>{filterTitle}</div>
       <div className={styles['filter-button-wrap']}>
         <div className={styles['filter-button']} onClick={priceLow}>
@@ -37,7 +36,6 @@ const ProductList: React.FC = () => {
           {filterExpensive}
         </div>
       </div>
-
       <div className='product-category'>
         {products
           .slice()
