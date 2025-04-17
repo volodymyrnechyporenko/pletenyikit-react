@@ -1,34 +1,30 @@
 import React from 'react';
-import useShowSkeleton from '../../hooks/useShowSkeleton';
 
-interface ProductItem {
+export interface ProductItem {
   id: number;
   name: string;
-  price: number;
+  price?: number;
   link: string;
   images: string[];
 }
 
 interface ProductProps {
   product: ProductItem;
+  type: 'category' | 'product';
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
-  const showSkeleton = useShowSkeleton();
-
-  return (
-    <div className='product'>
-      <div className='product-price'>{product.price}</div>
-      <div className='product-title'>{product.name}</div>
-      <img
-        loading='lazy'
-        src={`/img/${product.images[0]}`}
-        className='product-image'
-        alt={product.name}
-        style={{ opacity: showSkeleton ? 0 : 1 }}
-      />
-    </div>
-  );
-};
+const Product: React.FC<ProductProps> = ({ product, type }) => (
+  <div className='product'>
+    <div className={`${type}-price`}>{product?.price ?? ''}</div>
+    <div className={`${type}-title`}>{product.name}</div>
+    <div className='product-image-skeleton'></div>
+    <img
+      loading='lazy'
+      src={`/img/${product.images[0]}`}
+      className='product-image'
+      alt={product.name}
+    />
+  </div>
+);
 
 export default Product;

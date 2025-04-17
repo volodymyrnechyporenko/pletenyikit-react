@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BUILD_DATE } from '../constants/build-info';
-import useShowSkeleton from '../hooks/useShowSkeleton';
+import categories from './../data/categories.json';
+import Product, { ProductItem } from '../components/Product/Product';
 
 const HomePage: React.FC = () => {
-  const showSkeleton = useShowSkeleton();
+  const formattedCategories: ProductItem[] = JSON.parse(
+    JSON.stringify(categories),
+  );
 
   return (
     <>
@@ -16,52 +19,12 @@ const HomePage: React.FC = () => {
           Плетені аксесуари для вас та вашої оселі
         </h2>
       </div>
-
       <div className='product-category'>
-        <div className='product'>
-          <Link to='/toys'>
-            <div className='category-title'>Іграшки</div>
-            <img
-              src={'/img/zakladka-lysychka-01.jpg'}
-              className='product-image toys'
-              style={{ opacity: showSkeleton ? 0 : 1 }}
-              alt=''
-            />
+        {formattedCategories.map(category => (
+          <Link key={category.id} to={category.link}>
+            <Product product={category} type='category' />
           </Link>
-        </div>
-        <div className='product'>
-          <Link to='/accessories'>
-            <div className='category-title'>Одяг</div>
-            <img
-              src={'/img/mitenky-kotyky-zhovti-pukhnasti-01.jpg'}
-              className='product-image accessories'
-              style={{ opacity: showSkeleton ? 0 : 1 }}
-              alt=''
-            />
-          </Link>
-        </div>
-        <div className='product'>
-          <Link to='/pillows'>
-            <div className='category-title'>Подушки</div>
-            <img
-              src={'/img/kit-zhovta-smuzhka-01.jpg'}
-              className='product-image pillows'
-              style={{ opacity: showSkeleton ? 0 : 1 }}
-              alt=''
-            />
-          </Link>
-        </div>
-        <div className='product'>
-          <Link to='/kitchen'>
-            <div className='category-title'>Для кухні</div>
-            <img
-              src={'/img/biriuzovi-kotyky-01.jpg'}
-              className='product-image kitchen'
-              style={{ opacity: showSkeleton ? 0 : 1 }}
-              alt=''
-            />
-          </Link>
-        </div>
+        ))}
       </div>
     </>
   );

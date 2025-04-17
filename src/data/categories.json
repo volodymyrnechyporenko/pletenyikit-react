@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Іграшки",
+    "link": "/toys",
+    "images": [
+      "zakladka-lysychka-01.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Одяг",
+    "link": "/accessories",
+    "images": [
+      "mitenky-kotyky-zhovti-pukhnasti-01.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Подушки",
+    "link": "/pillows",
+    "images": [
+      "kit-zhovta-smuzhka-01.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Для кухні",
+    "link": "/kitchen",
+    "images": [
+      "biriuzovi-kotyky-01.jpg"
+    ]
+  }
+]

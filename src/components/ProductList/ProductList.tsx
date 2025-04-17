@@ -42,7 +42,7 @@ const ProductList: React.FC = () => {
           .reverse()
           .map(product => (
             <Link key={product.id} to={`/${category}/${product.link}`}>
-              <Product product={product} />
+              <Product product={product} type='product' />
             </Link>
           ))}
       </div>
