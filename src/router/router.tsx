@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   Outlet,
   ScrollRestoration,
+  useParams,
 } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 
@@ -28,7 +29,13 @@ export const routes = createBrowserRouter([
           const Component = await import(
             '../components/ProductList/ProductList'
           );
-          return { Component: Component.default };
+
+          const ProductListWrapper = () => {
+            const params = useParams();
+            return <Component.default key={params.category} />;
+          };
+
+          return { Component: ProductListWrapper };
         },
       },
       {

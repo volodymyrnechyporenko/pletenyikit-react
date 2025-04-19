@@ -79,6 +79,7 @@ main {
 
 .product-category {
   display: grid;
+  animation: goods-cat ease .2s;
   grid-gap: 2vw;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -116,8 +117,12 @@ main {
   transition: all .4s ease-in-out;
 }
 
-#about, .article, .item-all {
-  animation: goods-cat ease 1s;
+.article, .item-all {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+  border: 2px solid #aea28f;
+  animation: goods-cat ease .5s;
 }
 
 .product:hover {
@@ -151,30 +156,20 @@ main {
   text-align: center;
 }
 
-.article, .item-all, .order-all {
-  display: flex;
-  flex-direction: row;
-  padding: 3rem;
-  border: 2px solid #aea28f;
-}
-
-.item-all, .order-all {
+.item-all {
   align-items: flex-start;
   justify-content: space-between;
 }
 
 @media screen and (width <= 768px) {
-  .item-all, .order-all {
-    padding: 0 1rem;
-  }
-
   .item-all {
     align-items: center;
+    padding: 0 1rem;
   }
 }
 
 @media screen and (width <= 767px) {
-  .article, .item-all, .order-all {
+  .article, .item-all {
     flex-direction: column-reverse;
     padding: 0;
     border: none;
@@ -186,13 +181,13 @@ main {
 }
 
 @media screen and (width >= 768px) {
-  .article, .item-all, .order-all {
+  .article, .item-all {
     padding: 2rem;
   }
 }
 
 @media screen and (width <= 992px) and (orientation: landscape) {
-  .article, .item-all, .order-all {
+  .article, .item-all {
     flex-direction: row;
     border: none;
   }
@@ -208,7 +203,7 @@ main {
   }
 }
 
-h1, h2, h3, h4, .price, legend {
+h1, h2, h3, h4, .price {
   color: #cbac6a;
   font-weight: 700;
 }
@@ -233,13 +228,9 @@ h4 {
   margin: 1em 0;
 }
 
-p, .empty {
+p {
   font-size: calc(12px + 6 * (100vw / 1920));
   font-weight: 300;
-}
-
-.empty {
-  color: #cbac6a;
 }
 
 a {
