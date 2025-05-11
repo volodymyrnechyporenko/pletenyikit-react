@@ -34,9 +34,9 @@ const ProductDetails: React.FC = () => {
         </div>
         <div className='item-right'>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{product.dimensions}</p>
-          <p>{product.amount}</p>
+          {product.description.map(text => (
+            <p key={text}>{text}</p>
+          ))}
           <div className='price'>{product.price} грн</div>
         </div>
       </div>

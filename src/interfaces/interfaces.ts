@@ -7,9 +7,7 @@ export interface ItemDetails {
   category: string;
   images: string[];
   name: string;
-  description: string;
-  dimensions?: string;
-  amount?: string;
+  description: string[];
   price: number;
   similar?: { img: string; price: number; link: string }[];
   link: string;
