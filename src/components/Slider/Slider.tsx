@@ -53,13 +53,17 @@ const Slider = ({ images }: SliderProps) => {
   }, [containerRef, link]);
 
   return (
-    <div className={styles['slider-container']}>
+    <div data-testid='slider-container' className={styles['slider-container']}>
       {currentIndex > 0 && (
         <button
           title='scroll-to-left'
           className={styles['slider-to-left-btn']}
           onClick={() => handleLeftButtonClick()}>
-          <FontAwesomeIcon icon={faAngleLeft} size='2x' />
+          <FontAwesomeIcon
+            data-testid='font-awesome-icon'
+            icon={faAngleLeft}
+            size='2x'
+          />
         </button>
       )}
       {currentIndex < images.length - 1 && (
@@ -67,7 +71,11 @@ const Slider = ({ images }: SliderProps) => {
           title='scroll-to-right'
           className={styles['slider-to-right-btn']}
           onClick={() => handleRightButtonClick()}>
-          <FontAwesomeIcon icon={faAngleRight} size='2x' />
+          <FontAwesomeIcon
+            data-testid='font-awesome-icon'
+            icon={faAngleRight}
+            size='2x'
+          />
         </button>
       )}
       <div className={styles['slider-pagination-container']}>
