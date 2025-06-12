@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 import { renderHook } from '@testing-library/react';
-import useDetectSliderSwipe from '../src/hooks/useDetectSliderSwipe';
+import useDetectSliderSwipe from '../../src/hooks/useDetectSliderSwipe';
 
 describe('useDetectSliderSwipe', () => {
   let mockContainerElement: HTMLDivElement;
@@ -149,7 +149,7 @@ describe('useDetectSliderSwipe', () => {
 
     expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
     expect(removeEventListenerSpy).toHaveBeenCalledTimes(0);
-    
+
     rerender({ routeChanged });
 
     expect(addEventListenerSpy).toHaveBeenCalledTimes(1);

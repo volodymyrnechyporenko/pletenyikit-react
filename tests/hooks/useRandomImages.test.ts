@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { shuffleArray } from '../src/utils/shuffleArray';
-import useRandomImages from '../src/hooks/useRandomImages';
+import { shuffleArray } from '../../src/utils/shuffleArray';
+import useRandomImages from '../../src/hooks/useRandomImages';
 
-jest.mock('../src/utils/shuffleArray');
-jest.mock('../src/utils/shuffleArray');
-jest.mock('../src/constants/conditions', () => ({
+jest.mock('../../src/utils/shuffleArray');
+jest.mock('../../src/utils/shuffleArray');
+jest.mock('../../src/constants/conditions', () => ({
   careConditionsImages: [
     'care-conditions-01.jpeg',
     'care-conditions-02.jpeg',
@@ -149,8 +149,8 @@ describe('useRandomImages', () => {
     });
 
     it('should work with real shuffleArray function', async () => {
-      jest.unmock('../src/utils/shuffleArray');
-      jest.unmock('../src/constants/conditions');
+      jest.unmock('../../src/utils/shuffleArray');
+      jest.unmock('../../src/constants/conditions');
 
       const { result } = renderHook(() => useRandomImages());
 

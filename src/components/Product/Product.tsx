@@ -15,9 +15,13 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product, type }) => (
   <div className='product'>
-    <div className={`${type}-price`}>{product?.price ?? ''}</div>
-    <div className={`${type}-title`}>{product.name}</div>
-    <div className='product-image-skeleton'></div>
+    <div data-testid='price' className={`${type}-price`}>
+      {product?.price ?? ''}
+    </div>
+    <div data-testid='name' className={`${type}-title`}>
+      {product.name}
+    </div>
+    <div data-testid='skeleton' className='product-image-skeleton'></div>
     <img
       loading='lazy'
       src={`/img/${product.images[0]}`}

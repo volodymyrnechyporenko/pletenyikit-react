@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useScrollItemsOnClick from '../src/hooks/useScrollItemsOnClick';
+import useScrollItemsOnClick from '../../src/hooks/useScrollItemsOnClick';
 import { act } from 'react';
 
 describe('useScrollItemsOnClick', () => {

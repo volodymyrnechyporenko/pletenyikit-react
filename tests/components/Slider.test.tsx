@@ -1,15 +1,15 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import Slider from '../src/components/Slider/Slider';
-import useScrollItemsOnClick from '../src/hooks/useScrollItemsOnClick';
+import Slider from '../../src/components/Slider/Slider';
+import useScrollItemsOnClick from '../../src/hooks/useScrollItemsOnClick';
 
-jest.mock('../src/hooks/useDetectSliderSwipe', () => ({
+jest.mock('../../src/hooks/useDetectSliderSwipe', () => ({
   __esModule: true,
   default: jest.fn(),
 }));
 
-jest.mock('../src/hooks/useScrollItemsOnClick', () => ({
+jest.mock('../../src/hooks/useScrollItemsOnClick', () => ({
   __esModule: true,
   default: jest.fn(() => ({
     containerRef: { current: null },
@@ -17,7 +17,7 @@ jest.mock('../src/hooks/useScrollItemsOnClick', () => ({
   })),
 }));
 
-jest.mock('../src/components/Slider/SliderCard', () => ({
+jest.mock('../../src/components/Slider/SliderCard', () => ({
   __esModule: true,
   default: ({ image }: { image: string }) => (
     <div data-testid='slider-card' data-image={image}>
@@ -26,7 +26,7 @@ jest.mock('../src/components/Slider/SliderCard', () => ({
   ),
 }));
 
-jest.mock('../src/components/Slider/Slider.module.scss', () => ({
+jest.mock('../../src/components/Slider/Slider.module.scss', () => ({
   'slider-container': 'slider-container',
   'slider-to-left-btn': 'slider-to-left-btn',
   'slider-to-right-btn': 'slider-to-right-btn',

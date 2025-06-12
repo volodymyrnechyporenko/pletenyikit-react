@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import { act } from 'react';
-import useArrowToScrollToTop from '../src/hooks/useArrowToScrollToTop';
+import useArrowToScrollToTop from '../../src/hooks/useArrowToScrollToTop';
 
 describe('useArrowToScrollToTop', () => {
   let originalScrollTo: typeof window.scrollTo;

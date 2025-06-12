@@ -2,9 +2,9 @@ import { act, renderHook } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ReactNode } from 'react';
 import useDetectDataType from 'src/hooks/useDetectDataType';
-import { ItemDetails } from '../src/interfaces/interfaces';
+import { ItemDetails } from '../../src/interfaces/interfaces';
 
-jest.mock('../src/data/toys.json', () => [
+jest.mock('../../src/data/toys.json', () => [
   {
     id: 1,
     category: 'toys',
@@ -16,7 +16,7 @@ jest.mock('../src/data/toys.json', () => [
   },
 ]);
 
-jest.mock('../src/data/accessories.json', () => [
+jest.mock('../../src/data/accessories.json', () => [
   {
     id: 2,
     category: 'accessories',
@@ -28,7 +28,7 @@ jest.mock('../src/data/accessories.json', () => [
   },
 ]);
 
-jest.mock('../src/data/pillows.json', () => [
+jest.mock('../../src/data/pillows.json', () => [
   {
     id: 3,
     category: 'pillows',
@@ -40,7 +40,7 @@ jest.mock('../src/data/pillows.json', () => [
   },
 ]);
 
-jest.mock('../src/data/kitchen.json', () => [
+jest.mock('../../src/data/kitchen.json', () => [
   {
     id: 4,
     category: 'kitchen',

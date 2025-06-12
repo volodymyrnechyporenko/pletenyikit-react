@@ -25,7 +25,7 @@ const ProductList: React.FC = () => {
   return (
     <>
       <div className='heading'>
-        <h1>{heading}</h1>
+        <h1 data-testid='heading-title'>{heading}</h1>
       </div>
       <div className={styles['filter-heading']}>{filterTitle}</div>
       <div className={styles['filter-button-wrap']}>
