@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import useDetectDataType from '../../src/hooks/useDetectDataType';
@@ -28,8 +28,6 @@ jest.mock('../../src/components/Product/Product', () => {
 
 jest.mock('../../src/constants/texts', () => ({
   filterTitle: 'Сортування',
-  filterCheap: 'від дешевших',
-  filterExpensive: 'від дорожчих',
 }));
 
 jest.mock('../../src/components/ProductList/ProductList.module.scss', () => ({
@@ -47,6 +45,9 @@ const mockSetProducts = jest.fn();
 const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );
+
+const sortByCheapTestId = 'sort-by-cheap';
+const sortByExpensiveTestId = 'sort-by-expensive';
 
 describe('ProductList Component', () => {
   const mockProducts = [
@@ -87,7 +88,7 @@ describe('ProductList Component', () => {
 
   describe('Rendering', () => {
     it('renders the heading correctly', () => {
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -98,8 +99,8 @@ describe('ProductList Component', () => {
       );
     });
 
-    it('renders the filter title', () => {
-      render(
+    it('renders the sorting title', () => {
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -108,34 +109,19 @@ describe('ProductList Component', () => {
       expect(screen.getByText('Сортування')).toBeInTheDocument();
     });
 
-    it('renders filter buttons', () => {
-      render(
+    it('renders sorting buttons', () => {
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
       );
 
-      expect(screen.getByText('від дешевших')).toBeInTheDocument();
-      expect(screen.getByText('від дорожчих')).toBeInTheDocument();
-    });
-
-    it('renders all products in reverse order', () => {
-      render(
-        <TestWrapper>
-          <ProductList />
-        </TestWrapper>,
-      );
-
-      const productElements = screen.getAllByTestId(/^product-/);
-      expect(productElements).toHaveLength(3);
-
-      expect(productElements[0]).toHaveAttribute('data-testid', 'product-3');
-      expect(productElements[1]).toHaveAttribute('data-testid', 'product-2');
-      expect(productElements[2]).toHaveAttribute('data-testid', 'product-1');
+      expect(screen.getByTestId(sortByCheapTestId)).toBeInTheDocument();
+      expect(screen.getByTestId(sortByExpensiveTestId)).toBeInTheDocument();
     });
 
     it('renders products with correct links', () => {
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -144,13 +130,13 @@ describe('ProductList Component', () => {
       const links = screen.getAllByRole('link');
       expect(links).toHaveLength(3);
 
-      expect(links[0]).toHaveAttribute('href', '/toys/product-3');
+      expect(links[0]).toHaveAttribute('href', '/toys/product-1');
       expect(links[1]).toHaveAttribute('href', '/toys/product-2');
-      expect(links[2]).toHaveAttribute('href', '/toys/product-1');
+      expect(links[2]).toHaveAttribute('href', '/toys/product-3');
     });
 
     it('passes correct props to Product components', () => {
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -163,86 +149,86 @@ describe('ProductList Component', () => {
     });
   });
 
-  describe('Filtering Functionality', () => {
-    it('sorts products by price low to high when cheap filter is clicked', () => {
-      render(
+  describe('Sorting Functionality', () => {
+    it('sorts products by price high to low when expensive filter is clicked', () => {
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
       );
 
-      const cheapFilterButton = screen.getByText('від дешевших');
-      fireEvent.click(cheapFilterButton);
+      const sortByExpensiveButton = screen.getByTestId(sortByExpensiveTestId);
+      fireEvent.click(sortByExpensiveButton);
 
       expect(mockSetProducts).toHaveBeenCalledWith([
         {
-          id: 2,
-          name: 'Product 2',
-          price: 50,
-          link: 'product-2',
-          images: ['image2.jpg'],
+          id: 3,
+          images: ['image3.jpg'],
+          link: 'product-3',
+          name: 'Product 3',
+          price: 200,
         },
         {
           id: 1,
+          images: ['image1.jpg'],
+          link: 'product-1',
           name: 'Product 1',
           price: 100,
-          link: 'product-1',
-          images: ['image1.jpg'],
         },
         {
-          id: 3,
-          name: 'Product 3',
-          price: 200,
-          link: 'product-3',
-          images: ['image3.jpg'],
+          id: 2,
+          images: ['image2.jpg'],
+          link: 'product-2',
+          name: 'Product 2',
+          price: 50,
         },
       ]);
     });
 
-    it('sorts products by price high to low when expensive filter is clicked', () => {
-      render(
+    it('sorts products by price low to high when cheap filter is clicked', () => {
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
       );
 
-      const expensiveFilterButton = screen.getByText('від дорожчих');
-      fireEvent.click(expensiveFilterButton);
+      const sortByCheapButton = screen.getByTestId(sortByCheapTestId);
+      fireEvent.click(sortByCheapButton);
 
       expect(mockSetProducts).toHaveBeenCalledWith([
         {
-          id: 3,
-          name: 'Product 3',
-          price: 200,
-          link: 'product-3',
-          images: ['image3.jpg'],
+          id: 2,
+          images: ['image2.jpg'],
+          link: 'product-2',
+          name: 'Product 2',
+          price: 50,
         },
         {
           id: 1,
+          images: ['image1.jpg'],
+          link: 'product-1',
           name: 'Product 1',
           price: 100,
-          link: 'product-1',
-          images: ['image1.jpg'],
         },
         {
-          id: 2,
-          name: 'Product 2',
-          price: 50,
-          link: 'product-2',
-          images: ['image2.jpg'],
+          id: 3,
+          images: ['image3.jpg'],
+          link: 'product-3',
+          name: 'Product 3',
+          price: 200,
         },
       ]);
     });
 
     it('does not mutate the original products array when sorting', () => {
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
       );
 
       const originalProducts = [...mockProducts];
-      const cheapFilterButton = screen.getByText('від дешевших');
+      const cheapFilterButton = screen.getByTestId(sortByCheapTestId);
 
       fireEvent.click(cheapFilterButton);
 
@@ -257,7 +243,7 @@ describe('ProductList Component', () => {
         products: [],
       });
 
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -277,7 +263,7 @@ describe('ProductList Component', () => {
         products: singleProduct,
       });
 
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
@@ -311,13 +297,13 @@ describe('ProductList Component', () => {
         products: samePrice,
       });
 
-      render(
+      const screen = render(
         <TestWrapper>
           <ProductList />
         </TestWrapper>,
       );
 
-      const cheapFilterButton = screen.getByText('від дешевших');
+      const cheapFilterButton = screen.getByTestId(sortByCheapTestId);
       fireEvent.click(cheapFilterButton);
 
       expect(mockSetProducts).toHaveBeenCalledWith(samePrice);
@@ -327,24 +313,26 @@ describe('ProductList Component', () => {
 
 describe('CSS Classes', () => {
   it('applies correct CSS classes', () => {
-    render(
+    const screen = render(
       <TestWrapper>
         <ProductList />
       </TestWrapper>,
     );
 
     expect(screen.getByText('Сортування')).toHaveClass('filter-heading');
-    expect(screen.getByText('від дешевших').parentElement).toHaveClass(
+    expect(screen.getByTestId(sortByCheapTestId).parentElement).toHaveClass(
       'filter-button-wrap',
     );
-    expect(screen.getByText('від дешевших')).toHaveClass('filter-button');
-    expect(screen.getByText('від дорожчих')).toHaveClass('filter-button');
+    expect(screen.getByTestId(sortByCheapTestId)).toHaveClass('filter-button');
+    expect(screen.getByTestId(sortByExpensiveTestId)).toHaveClass(
+      'filter-button',
+    );
   });
 });
 
 describe('Accessibility', () => {
   it('has proper heading structure', () => {
-    render(
+    const screen = render(
       <TestWrapper>
         <ProductList />
       </TestWrapper>,
@@ -356,14 +344,14 @@ describe('Accessibility', () => {
   });
 
   it('filter buttons are clickable', () => {
-    render(
+    const screen = render(
       <TestWrapper>
         <ProductList />
       </TestWrapper>,
     );
 
-    const cheapButton = screen.getByText('від дешевших');
-    const expensiveButton = screen.getByText('від дорожчих');
+    const cheapButton = screen.getByTestId(sortByCheapTestId);
+    const expensiveButton = screen.getByTestId(sortByExpensiveTestId);
 
     expect(cheapButton).toBeInTheDocument();
     expect(expensiveButton).toBeInTheDocument();

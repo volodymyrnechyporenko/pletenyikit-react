@@ -18,6 +18,6 @@ export const careConditions = [
 
 export const filterTitle = 'Сортування';
 
-export const filterCheap = 'від дешевших';
+export const sortByCheapTxt = 'від дешевших';
 
-export const filterExpensive = 'від дорожчих';
+export const sortByExpensiveTxt = 'від дорожчих';
