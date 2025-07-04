@@ -1,27 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Мінімалізм і рожеві лапки",
-    "description": [
-      "Перше, що милує наше око в котиках - силует, хвіст і вушка. Друге - деталі, а часто - подушечки лапок. Тож, найголовніше в цьому подуху присутнє. Прошу купувати і класти на ліжечко.",
-      "Матеріали: акрил (пряжа), холофайбер (наповнення). Плетіння: спиці та гачок.",
-      "Розміри: 32/33/15см."
-    ],
-    "images": [
-      "minimalistychnyi_01.jpg",
-      "minimalistychnyi_02.jpg",
-      "minimalistychnyi_03.jpg",
-      "minimalistychnyi_04.jpg",
-      "minimalistychnyi_05.jpg",
-      "minimalistychnyi_06.jpg",
-      "minimalistychnyi_07.jpg",
-      "minimalistychnyi_08.jpg"
-    ],
-    "price": 550,
-    "link": "minimalizm-lapky",
-    "category": "Подушки"
-  },
-  {
     "id": 6,
     "name": "Синьо-бежевий меланж",
     "description": [
