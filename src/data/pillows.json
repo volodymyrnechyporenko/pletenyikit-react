@@ -379,27 +379,6 @@
     "category": "Подушки"
   },
   {
-    "id": 49,
-    "name": "Квадратний жовтий песик",
-    "description": [
-      "ПесоПодуха створено повністю вручну для обіймів та прикрашання оселі.",
-      "Подушку-іграшку плетено та пошито вручну з приємної м'якої акрилової пряжі. Песик містить і плетіння спицями і плетіння гачком, мордочку вишито вручну. Подушка має гіпоалергенне наповнення - холофайбер.",
-      "Матеріали: акрил (пряжа), холофайбер (наповнювач).",
-      "Розмір: 31/32/15см."
-    ],
-    "images": [
-      "kvadratnyi-zhovtyi-pesyk-01.jpg",
-      "kvadratnyi-zhovtyi-pesyk-02.jpg",
-      "kvadratnyi-zhovtyi-pesyk-03.jpg",
-      "kvadratnyi-zhovtyi-pesyk-04.jpg",
-      "kvadratnyi-zhovtyi-pesyk-05.jpg",
-      "kvadratnyi-zhovtyi-pesyk-06.jpg"
-    ],
-    "price": 800,
-    "link": "kvadratnyi-zhovtyi-pesyk",
-    "category": "Подушки"
-  },
-  {
     "id": 50,
     "name": "Котоджентльмен з чубчиком",
     "description": [
