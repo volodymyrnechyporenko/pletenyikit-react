@@ -23,60 +23,6 @@
     "category": "Для кухні"
   },
   {
-    "id": 2,
-    "name": "Закохані котики",
-    "description": [
-      "Таких підставочок - всього дві в наявності. Тож варто поспішити з придбанням ;)",
-      "Матеріали: акрил (пряжа), бавовна (підкладка).",
-      "Розміри: 16/13см.",
-      "Ціна за штуку."
-    ],
-    "images": [
-      "zakohani_kotyky_01.jpg",
-      "zakohani_kotyky_02.jpg",
-      "zakohani_kotyky_03.jpg"
-    ],
-    "price": 50,
-    "link": "zakokhani-kotyky",
-    "category": "Для кухні",
-    "similar": [
-      {
-        "img": "chervoni_fakturni_01.jpg",
-        "price": 50,
-        "link": "chervona-faktura"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Червона фактура",
-    "description": [
-      "Всього дві в наявності! Червоні, фатурні та досить великого розміру підставочки під горнятка - до вашої уваги.",
-      "Орнамент на виробі створено виключно за рахунок чергування різних петельок в процесі плетіння.",
-      "Є підставочка з силуетом руки та сонечка. Зі зворотнього боку - бавовняна підкладка з квітковим орнаментом.",
-      "Розміри: 18/15см.",
-      "Ціна за штуку."
-    ],
-    "images": [
-      "chervoni_fakturni_01.jpg",
-      "chervoni_fakturni_02.jpg",
-      "chervoni_fakturni_03.jpg",
-      "chervoni_fakturni_04.jpg",
-      "chervoni_fakturni_05.jpg",
-      "chervoni_fakturni_06.jpg"
-    ],
-    "price": 50,
-    "link": "chervona-faktura",
-    "category": "Для кухні",
-    "similar": [
-      {
-        "img": "zakohani_kotyky_01.jpg",
-        "price": 50,
-        "link": "zakokhani-kotyky"
-      }
-    ]
-  },
-  {
     "id": 5,
     "name": "Кольорові смайлики",
     "description": [
@@ -169,62 +115,6 @@
         "img": "siri_smailyky_01.jpg",
         "price": 35,
         "link": "siri-smailyky"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Бірюзові котики",
-    "description": [
-      "Набір підставочок під горнята 'Бірюзові котики', готовий прикрашати ваше чаювання чи кавування.",
-      "Плетені гачком та вишиті вручну підставки - чудовий подарунок для любителів_ок сімейства котячих. До набору входять шість підставочок.",
-      "Діаметр 11.5см.",
-      "Ціна за набір з 6 шт."
-    ],
-    "images": [
-      "biriuzovi-kotyky-01.jpg",
-      "biriuzovi-kotyky-02.jpg",
-      "biriuzovi-kotyky-03.jpg",
-      "biriuzovi-kotyky-04.jpg",
-      "biriuzovi-kotyky-05.jpg",
-      "biriuzovi-kotyky-06.jpg"
-    ],
-    "price": 250,
-    "link": "biriuzovi-kotyky",
-    "category": "Для кухні",
-    "similar": [
-      {
-        "img": "kotyky-buzkovi-01.jpg",
-        "price": 250,
-        "link": "kotyky-buzkovi"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Бузкові котики",
-    "description": [
-      "Набір підставочок під горнята 'Бузкові котики', готовий прикрашати ваше чаювання чи кавування.",
-      "Плетені гачком та вишиті вручну підставки - чудовий подарунок для любителів_ок сімейства котячих. До набору входять шість підставочок.",
-      "Діаметр 11.5см.",
-      "Ціна за набір з 6 шт."
-    ],
-    "images": [
-      "kotyky-buzkovi-01.jpg",
-      "kotyky-buzkovi-02.jpg",
-      "kotyky-buzkovi-03.jpg",
-      "kotyky-buzkovi-04.jpg",
-      "kotyky-buzkovi-05.jpg",
-      "kotyky-buzkovi-06.jpg"
-    ],
-    "price": 250,
-    "link": "kotyky-buzkovi",
-    "category": "Для кухні",
-    "similar": [
-      {
-        "img": "biriuzovi-kotyky-01.jpg",
-        "price": 250,
-        "link": "biriuzovi-kotyky"
       }
     ]
   },

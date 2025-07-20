@@ -72,11 +72,6 @@
         "img": "kotoigrashka_sirenka_01.jpg",
         "price": 250,
         "link": "kotyk-siryi"
-      },
-      {
-        "img": "koshenya-chorno-sire-01.jpg",
-        "price": 250,
-        "link": "koshenya-chorno-sire"
       }
     ]
   },
@@ -104,29 +99,8 @@
         "img": "bezheva_kotoigrashka_01.jpg",
         "price": 250,
         "link": "kotyk-bezhevyi"
-      },
-      {
-        "img": "koshenya-chorno-sire-01.jpg",
-        "price": 250,
-        "link": "koshenya-chorno-sire"
       }
     ]
-  },
-  {
-    "id": 10,
-    "name": "Кошенятко з сердечком",
-    "description": [
-      "Іграшку плетено з неймовірно приємної на дотик та цікавої на вигляд пухнастої пряжі. Котик має м'якенькі рухомі лапки та хвостик і вишиту вручну мордочку. Сердечко за бажанням можна поміняти на рожеве чи прибрати.",
-      "Матеріали: акрил, бісер (очі), холофайбер (наповнення).",
-      "Розмір 13/7 см."
-    ],
-    "images": [
-      "kotyky_02.jpg",
-      "kotyky_03.jpg"
-    ],
-    "price": 250,
-    "link": "koshenyatko-serdechko",
-    "category": "Іграшки"
   },
   {
     "id": 13,
@@ -167,36 +141,5 @@
     "price": 150,
     "link": "zakladka-lysychka",
     "category": "Іграшки"
-  },
-  {
-    "id": 16,
-    "name": "Чорно-сіре кошеня",
-    "description": [
-      "Сіренький, м'якенький та посміхається очима.",
-      "Іграшка котик, плетений спицями з акрилової пряжі, має наповнення холлофайбер та вишиту мордочку. Готовий прикрашати собою вашу оселю.",
-      "Розмір: 20/15см."
-    ],
-    "images": [
-      "koshenya-chorno-sire-01.jpg",
-      "koshenya-chorno-sire-02.jpg",
-      "koshenya-chorno-sire-03.jpg",
-      "koshenya-chorno-sire-04.jpg",
-      "koshenya-chorno-sire-05.jpg"
-    ],
-    "price": 250,
-    "link": "koshenya-chorno-sire",
-    "category": "Іграшки",
-    "similar": [
-      {
-        "img": "bezheva_kotoigrashka_01.jpg",
-        "price": 250,
-        "link": "kotyk-bezhevyi"
-      },
-      {
-        "img": "kotoigrashka_sirenka_01.jpg",
-        "price": 250,
-        "link": "kotyk-siryi"
-      }
-    ]
   }
 ]
