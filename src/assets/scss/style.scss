@@ -82,6 +82,7 @@ main {
   animation: goods-cat ease .2s;
   grid-gap: 2vw;
   grid-template-columns: repeat(4, 1fr);
+  min-height: 64vh;
 }
 
 @media screen and (width <= 767px) and (orientation: portrait) {
