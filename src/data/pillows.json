@@ -1,5 +1,100 @@
 [
   {
+    "id": 57,
+    "name": "Бірюзовий монстр",
+    "description": [
+      "Кольоровий, м‘який та веселий - бірюзовий ПодушкоМонстрик чекає моменту, коли прикрасить ваш диван чи ліжко!",
+      "Плетена та пошита повністю вручну, ця подушка-іграшка стане чудовим подарунком близькій людині, для малечі або й собі - для гарного настрою!",
+      "Матеріали: акрил (пряжа), холофайбер (наповнення).",
+      "Розмір: 28/28/15см."
+    ],
+    "images": [
+      "monstryk-biriuzovyi-01.jpeg",
+      "monstryk-biriuzovyi-02.jpeg",
+      "monstryk-biriuzovyi-03.jpeg",
+      "monstryk-biriuzovyi-04.jpeg",
+      "monstryk-biriuzovyi-05.jpeg",
+      "monstryk-biriuzovyi-06.jpeg"
+    ],
+    "price": 1200,
+    "link": "monstryk-biriuzovyi",
+    "category": "Подушки",
+    "similar": [
+      {
+        "img": "monstryk-syniy-01.jpeg",
+        "price": 1200,
+        "link": "monstryk-syniy"
+      },
+      {
+        "img": "monstryk-01.jpeg",
+        "price": 1200,
+        "link": "monstryk"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Синій монстр",
+    "description": [
+      "Кольоровий, м‘який та веселий - синій ПодушкоМонстрик чекає моменту, коли прикрасить ваш диван чи ліжко!",
+      "Плетена та пошита повністю вручну, ця подушка-іграшка стане чудовим подарунком близькій людині, для малечі або й собі - для гарного настрою!",
+      "Матеріали: акрил (пряжа), холофайбер (наповнення).",
+      "Розмір: 28/33/15см."
+    ],
+    "images": [
+      "monstryk-syniy-01.jpeg",
+      "monstryk-syniy-02.jpeg",
+      "monstryk-syniy-03.jpeg",
+      "monstryk-syniy-04.jpeg",
+      "monstryk-syniy-05.jpeg",
+      "monstryk-syniy-06.jpeg"
+    ],
+    "price": 1200,
+    "link": "monstryk-syniy",
+    "category": "Подушки",
+    "similar": [
+      {
+        "img": "monstryk-biriuzovyi-01.jpeg",
+        "price": 1200,
+        "link": "monstryk-biriuzovyi"
+      },
+      {
+        "img": "monstryk-01.jpeg",
+        "price": 1200,
+        "link": "monstryk"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Смугач",
+    "description": [
+      "Ця модель КотоПодуха - одна з найпопулярніших і може здатись, що таких подушок було вже багато.",
+      "Але, якщо порівняти всі сплетені в попередні роки подушки-іграшки такої моделі, ви не знайдете подібних",
+      "Так як ми використовуємо нитки повторно, підібрати однакові для виробів важко і повторюються в схожих кольорах лише деякі моделі, якщо, наприклад, було розпущено якесь покривало чи великий светр.",
+      "Тож всі товстенькі сірі котики - неповторні, бо сірі ниточки гарної якості не так часто зустрічаються.",
+      "Матеріали: акрил (пряжа), холофайбер (наповнення).",
+      "Розмір: 36/28/16см."
+    ],
+    "images": [
+      "smuhach-01.jpeg",
+      "smuhach-02.jpeg",
+      "smuhach-03.jpeg",
+      "smuhach-04.jpeg",
+      "smuhach-05.jpeg",
+      "smuhach-06.jpeg",
+      "smuhach-07.jpeg",
+      "smuhach-08.jpeg",
+      "smuhach-09.jpeg",
+      "smuhach-10.jpeg",
+      "smuhach-11.jpeg",
+      "smuhach-12.jpeg"
+    ],
+    "price": 1200,
+    "link": "smuhach",
+    "category": "Подушки"
+  },
+  {
     "id": 6,
     "name": "Синьо-бежевий меланж",
     "description": [
@@ -313,6 +408,18 @@
     ],
     "price": 1200,
     "link": "monstryk",
-    "category": "Подушки"
+    "category": "Подушки",
+    "similar": [
+      {
+        "img": "monstryk-biriuzovyi-01.jpeg",
+        "price": 1200,
+        "link": "monstryk-biriuzovyi"
+      },
+      {
+        "img": "monstryk-syniy-01.jpeg",
+        "price": 1200,
+        "link": "monstryk-syniy"
+      }
+    ]
   }
 ]
