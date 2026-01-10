@@ -6,12 +6,13 @@ interface ItemProps {
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item }) => {
-  const imagePath = `/img/${item.img}`;
+  const imagePath = item?.img ? `/img/${item.img}` : '/img/placeholder.jpg';
+  const price = item?.price ?? 0;
 
   return (
     <div className='product' data-testid='product-container'>
       <div className='product-price' data-testid='product-price'>
-        {item.price}
+        {price}
       </div>
       <img
         loading='lazy'

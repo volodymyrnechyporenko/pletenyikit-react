@@ -87,6 +87,7 @@ main {
 
 @media screen and (width <= 767px) and (orientation: portrait) {
   .product-category {
+    min-height: 50vh;
     grid-template-columns: 1fr;
   }
 }

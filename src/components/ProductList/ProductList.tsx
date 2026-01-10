@@ -1,26 +1,76 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState, } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductList.module.scss';
-import {
-  filterTitle,
-  sortByCheapTxt,
-  sortByExpensiveTxt,
-} from '../../constants/texts';
+import { filterTitle, sortByCheapTxt, sortByExpensiveTxt, } from '../../constants/texts';
 import Product from '../Product/Product';
 import useDetectDataType from '../../hooks/useDetectDataType';
+import { ItemDetails } from '../../interfaces/interfaces';
+
+type SortOrder = 'none' | 'low' | 'high';
 
 const ProductList: React.FC = () => {
   const { category, heading, products, setProducts } = useDetectDataType();
+  const [sortOrder, setSortOrder] = useState<SortOrder>('none');
+  const originalProductsRef = useRef<ItemDetails[]>([]);
+  const prevCategoryRef = useRef<string | undefined>(undefined);
+  const prevSortOrderForRefUpdate = useRef<SortOrder>('none');
 
-  const sortByHighPrice = () => {
-    const sortedProducts = [...products].sort((a, b) => b.price - a.price);
-    setProducts(sortedProducts);
-  };
+  useEffect(() => {
+    if (prevCategoryRef.current !== category) {
+      prevCategoryRef.current = category;
+      originalProductsRef.current = [];
+      setSortOrder('none');
+      prevSortOrderForRefUpdate.current = 'none';
+    } else if (
+      prevSortOrderForRefUpdate.current === 'none' &&
+      sortOrder !== 'none'
+    ) {
+      if (products.length > 0) {
+        originalProductsRef.current = [...products];
+      }
+      prevSortOrderForRefUpdate.current = sortOrder;
+    } else if (
+      prevSortOrderForRefUpdate.current !== 'none' &&
+      sortOrder === 'none'
+    ) {
+      prevSortOrderForRefUpdate.current = 'none';
+    }
+  }, [category, products, sortOrder]);
 
-  const sortByLowPrice = () => {
-    const sortedProducts = [...products].sort((a, b) => a.price - b.price);
-    setProducts(sortedProducts);
-  };
+  const sortedProducts = useMemo(() => {
+    if (sortOrder === 'none') {
+      return originalProductsRef.current.length > 0
+        ? originalProductsRef.current
+        : products;
+    }
+
+    const sourceProducts =
+      originalProductsRef.current.length > 0
+        ? originalProductsRef.current
+        : products;
+
+    return [...sourceProducts].sort((a, b) => {
+      const priceA = a?.price ?? 0;
+      const priceB = b?.price ?? 0;
+      return sortOrder === 'low' ? priceA - priceB : priceB - priceA;
+    });
+  }, [sortOrder, products]);
+
+  const prevSortOrderRef = useRef<SortOrder>('none');
+  useEffect(() => {
+    if (prevSortOrderRef.current !== sortOrder) {
+      prevSortOrderRef.current = sortOrder;
+      setProducts(sortedProducts);
+    }
+  }, [sortOrder, sortedProducts, setProducts]);
+
+  const sortByHighPrice = useCallback(() => {
+    setSortOrder(prev => (prev === 'high' ? 'none' : 'high'));
+  }, []);
+
+  const sortByLowPrice = useCallback(() => {
+    setSortOrder(prev => (prev === 'low' ? 'none' : 'low'));
+  }, []);
 
   return (
     <>
@@ -43,11 +93,25 @@ const ProductList: React.FC = () => {
         </div>
       </div>
       <div className='product-category'>
-        {products.map(product => (
-          <Link key={product.id} to={`/${category}/${product.link}`}>
-            <Product product={product} type='product' />
-          </Link>
-        ))}
+        {sortedProducts.length === 0 && category ? (
+          <div className={styles['product-list-skeleton']}>
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className={styles['skeleton-product-card']}>
+                <div className={styles['skeleton-product-image']}></div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          sortedProducts
+            .filter(product => product && product.link && product.id)
+            .map(product => (
+              <Link
+                key={`${sortOrder}-${product.id}`}
+                to={`/${category}/${product.link}`}>
+                <Product product={product} type='product' />
+              </Link>
+            ))
+        )}
       </div>
     </>
   );

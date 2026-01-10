@@ -21,34 +21,77 @@ const ProductDetails: React.FC = () => {
     }
   }, [link, products]);
 
-  if (!product) return;
+  if (!product) {
+    return (
+      <div className={styles['product-details-skeleton']}>
+        <div className='heading'>
+          <div className={styles['skeleton-heading']}></div>
+        </div>
+        <div className='item-all'>
+          <div className='item-left'>
+            <div className={styles['skeleton-slider']}></div>
+          </div>
+          <div className='item-right'>
+            <div className={styles['skeleton-title']}></div>
+            <div className={styles['skeleton-text']}></div>
+            <div className={styles['skeleton-text']}></div>
+            <div className={styles['skeleton-text']}></div>
+            <div className={styles['skeleton-price']}></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const images =
+    product.images && Array.isArray(product.images) ? product.images : [];
+  const description =
+    product.description && Array.isArray(product.description)
+      ? product.description
+      : [];
+  const similar =
+    product.similar && Array.isArray(product.similar) ? product.similar : [];
+  const categoryName = product.category || 'Товар';
+  const productName = product.name || '';
+  const productPrice = product.price ?? 0;
 
   return (
     <>
       <div className='heading'>
-        <h1>{product.category}</h1>
+        <h1>{categoryName}</h1>
       </div>
       <div className='item-all'>
         <div className='item-left'>
-          <Slider images={product.images} />
+          {images.length > 0 ? (
+            <Slider images={images} />
+          ) : (
+            <div className={styles['skeleton-slider']}></div>
+          )}
         </div>
         <div className='item-right'>
-          <h2>{product.name}</h2>
-          {product.description.map(text => (
-            <p key={text}>{text}</p>
-          ))}
-          <div className='price'>{product.price} грн</div>
+          <h2>{productName}</h2>
+          {description.length > 0 &&
+            description.map((text, index) => (
+              <p key={`desc-${index}`}>{text}</p>
+            ))}
+          <div className='price'>{productPrice} грн</div>
         </div>
       </div>
-      {product.similar && <h3>Схожі товари</h3>}
-      <div className={styles['product-similar']}>
-        {product.similar &&
-          product.similar.map(item => (
-            <Link key={item.link} to={`/${category}/${item.link}`}>
-              <SimilarItem item={item} />
-            </Link>
-          ))}
-      </div>
+      {similar.length > 0 && <h3>Схожі товари</h3>}
+      {similar.length > 0 && (
+        <div className={styles['product-similar']}>
+          {similar.map(
+            (item, index) =>
+              item.link && (
+                <Link
+                  key={item.link || `similar-${index}`}
+                  to={`/${category}/${item.link}`}>
+                  <SimilarItem item={item} />
+                </Link>
+              ),
+          )}
+        </div>
+      )}
     </>
   );
 };

@@ -19,6 +19,8 @@ const Slider = ({ images }: SliderProps) => {
 
   const { containerRef, handleCardClick } = useScrollItemsOnClick();
 
+  const validImages = images && Array.isArray(images) ? images : [];
+
   useDetectSliderSwipe(containerRef, setCurrentIndex, routeChanged);
 
   const handleLeftButtonClick = (index?: number) => {
@@ -32,7 +34,7 @@ const Slider = ({ images }: SliderProps) => {
     const newIndex =
       index !== undefined
         ? index
-        : Math.min(images.length - 1, currentIndex + 1);
+        : Math.min(validImages.length - 1, currentIndex + 1);
     setCurrentIndex(newIndex);
     handleCardClick(newIndex);
   };
@@ -50,7 +52,13 @@ const Slider = ({ images }: SliderProps) => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [containerRef, link]);
+  }, [containerRef, link, validImages.length]);
+
+  useEffect(() => {
+    if (validImages.length > 0 && currentIndex >= validImages.length) {
+      setCurrentIndex(0);
+    }
+  }, [validImages.length, currentIndex]);
 
   return (
     <div data-testid='slider-container' className={styles['slider-container']}>
@@ -66,7 +74,7 @@ const Slider = ({ images }: SliderProps) => {
           />
         </button>
       )}
-      {currentIndex < images.length - 1 && (
+      {currentIndex < validImages.length - 1 && (
         <button
           title='scroll-to-right'
           className={styles['slider-to-right-btn']}
@@ -78,29 +86,33 @@ const Slider = ({ images }: SliderProps) => {
           />
         </button>
       )}
-      <div className={styles['slider-pagination-container']}>
-        {images.map((image, index) => (
-          <button
-            title={`scroll-to-item-${index}`}
-            key={`scroll-to-${image}`}
-            className={
-              styles[
-                `slider-pagination-btn${currentIndex === index ? '-active' : ''}`
-              ]
-            }
-            onClick={() => {
-              setCurrentIndex(index);
-              handleCardClick(index);
-            }}>
-            &#x2022;
-          </button>
-        ))}
-      </div>
-      <div className={styles['slider-scrollable-block']} ref={containerRef}>
-        {images.map(image => (
-          <SliderCard key={image} image={image} />
-        ))}
-      </div>
+      {validImages.length > 0 && (
+        <>
+          <div className={styles['slider-pagination-container']}>
+            {validImages.map((image, index) => (
+              <button
+                title={`scroll-to-item-${index}`}
+                key={`scroll-to-${image}`}
+                className={
+                  styles[
+                    `slider-pagination-btn${currentIndex === index ? '-active' : ''}`
+                  ]
+                }
+                onClick={() => {
+                  setCurrentIndex(index);
+                  handleCardClick(index);
+                }}>
+                &#x2022;
+              </button>
+            ))}
+          </div>
+          <div className={styles['slider-scrollable-block']} ref={containerRef}>
+            {validImages.map(image => (
+              <SliderCard key={image} image={image} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
