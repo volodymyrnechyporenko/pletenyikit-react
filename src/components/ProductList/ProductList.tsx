@@ -78,19 +78,26 @@ const ProductList: React.FC = () => {
         <h1 data-testid='heading-title'>{heading}</h1>
       </div>
       <div className={styles['filter-heading']}>{filterTitle}</div>
-      <div className={styles['filter-button-wrap']}>
-        <div
+      <div
+        className={styles['filter-button-wrap']}
+        role='group'
+        aria-label='Сортування'>
+        <button
+          type='button'
           data-testid='sort-by-cheap'
           className={styles['filter-button']}
+          aria-pressed={sortOrder === 'low'}
           onClick={sortByLowPrice}>
           {sortByCheapTxt}
-        </div>
-        <div
+        </button>
+        <button
+          type='button'
           data-testid='sort-by-expensive'
           className={styles['filter-button']}
+          aria-pressed={sortOrder === 'high'}
           onClick={sortByHighPrice}>
           {sortByExpensiveTxt}
-        </div>
+        </button>
       </div>
       <div className='product-category'>
         {sortedProducts.length === 0 && category ? (

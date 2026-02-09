@@ -61,11 +61,16 @@ const Slider = ({ images }: SliderProps) => {
   }, [validImages.length, currentIndex]);
 
   return (
-    <div data-testid='slider-container' className={styles['slider-container']}>
+    <div
+      data-testid='slider-container'
+      className={styles['slider-container']}
+      role='region'
+      aria-label='Зображення товару'>
       {currentIndex > 0 && (
         <button
-          title='scroll-to-left'
+          type='button'
           className={styles['slider-to-left-btn']}
+          aria-label='Попереднє зображення'
           onClick={() => handleLeftButtonClick()}>
           <FontAwesomeIcon
             data-testid='font-awesome-icon'
@@ -76,8 +81,9 @@ const Slider = ({ images }: SliderProps) => {
       )}
       {currentIndex < validImages.length - 1 && (
         <button
-          title='scroll-to-right'
+          type='button'
           className={styles['slider-to-right-btn']}
+          aria-label='Наступне зображення'
           onClick={() => handleRightButtonClick()}>
           <FontAwesomeIcon
             data-testid='font-awesome-icon'
@@ -88,11 +94,17 @@ const Slider = ({ images }: SliderProps) => {
       )}
       {validImages.length > 0 && (
         <>
-          <div className={styles['slider-pagination-container']}>
+          <div
+            className={styles['slider-pagination-container']}
+            role='tablist'
+            aria-label='Номер зображення'>
             {validImages.map((image, index) => (
               <button
-                title={`scroll-to-item-${index}`}
+                type='button'
                 key={`scroll-to-${image}`}
+                role='tab'
+                aria-label={`Зображення ${index + 1} з ${validImages.length}`}
+                aria-selected={currentIndex === index}
                 className={
                   styles[
                     `slider-pagination-btn${currentIndex === index ? '-active' : ''}`

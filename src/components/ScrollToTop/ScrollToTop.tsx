@@ -9,12 +9,15 @@ const ScrollToTop: React.FC = () => {
 
   return (
     <div
-      onClick={scrollTop}
       style={{ display: isVisible ? 'block' : 'none' }}
       className='scrollToTop'>
-      <a className={styles['scroll-to-top']}>
+      <button
+        type='button'
+        className={styles['scroll-to-top']}
+        aria-label='Прокрутити вгору'
+        onClick={scrollTop}>
         <FontAwesomeIcon icon={faAngleUp} size='3x' />
-      </a>
+      </button>
     </div>
   );
 };

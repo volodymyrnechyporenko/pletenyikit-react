@@ -40,6 +40,9 @@ describe('Slider Component', () => {
   const mockImages = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
   const mockHandleCardClick = jest.fn();
 
+  const getPaginationLabel = (index: number, total: number) =>
+    `Зображення ${index + 1} з ${total}`;
+
   beforeEach(() => {
     jest.clearAllMocks();
     (useScrollItemsOnClick as jest.Mock).mockReturnValue({
@@ -76,23 +79,31 @@ describe('Slider Component', () => {
 
     it('renders pagination buttons for each image', () => {
       renderSlider();
-      const paginationButtons = screen.getAllByTitle(/scroll-to-item-/);
+      const paginationButtons = screen.getAllByRole('tab', {
+        name: /Зображення \d+ з \d+/,
+      });
       expect(paginationButtons).toHaveLength(mockImages.length);
     });
 
     it('does not render left button when at first image', () => {
       renderSlider();
-      expect(screen.queryByTitle('scroll-to-left')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Попереднє зображення' }),
+      ).not.toBeInTheDocument();
     });
 
     it('renders right button when not at last image', () => {
       renderSlider();
-      expect(screen.getByTitle('scroll-to-right')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Наступне зображення' }),
+      ).toBeInTheDocument();
     });
 
     it('applies active class to first pagination button initially', () => {
       renderSlider();
-      const firstPaginationBtn = screen.getByTitle('scroll-to-item-0');
+      const firstPaginationBtn = screen.getByRole('tab', {
+        name: getPaginationLabel(0, mockImages.length),
+      });
       expect(firstPaginationBtn).toHaveClass('slider-pagination-btn-active');
     });
   });
@@ -101,25 +112,33 @@ describe('Slider Component', () => {
     it('shows left button when currentIndex > 0', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
 
-      expect(screen.getByTitle('scroll-to-left')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Попереднє зображення' }),
+      ).toBeInTheDocument();
     });
 
     it('hides right button when at last image', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-item-2'));
+      fireEvent.click(
+        screen.getByRole('tab', {
+          name: getPaginationLabel(2, mockImages.length),
+        }),
+      );
 
-      expect(screen.queryByTitle('scroll-to-right')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Наступне зображення' }),
+      ).not.toBeInTheDocument();
     });
 
     it('calls handleCardClick when left button is clicked', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
 
-      fireEvent.click(screen.getByTitle('scroll-to-left'));
+      fireEvent.click(screen.getByRole('button', { name: 'Попереднє зображення' }));
 
       expect(mockHandleCardClick).toHaveBeenCalledWith(0);
     });
@@ -127,7 +146,7 @@ describe('Slider Component', () => {
     it('calls handleCardClick when right button is clicked', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
 
       expect(mockHandleCardClick).toHaveBeenCalledWith(1);
     });
@@ -135,8 +154,8 @@ describe('Slider Component', () => {
     it('does not go below index 0 when clicking left', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
-      fireEvent.click(screen.getByTitle('scroll-to-left'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Попереднє зображення' }));
 
       expect(mockHandleCardClick).toHaveBeenLastCalledWith(0);
     });
@@ -144,9 +163,15 @@ describe('Slider Component', () => {
     it('does not exceed last index when clicking right', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-item-2'));
+      fireEvent.click(
+        screen.getByRole('tab', {
+          name: getPaginationLabel(2, mockImages.length),
+        }),
+      );
 
-      expect(screen.queryByTitle('scroll-to-right')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Наступне зображення' }),
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -154,20 +179,28 @@ describe('Slider Component', () => {
     it('updates currentIndex when pagination button is clicked', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-item-1'));
+      fireEvent.click(
+        screen.getByRole('tab', {
+          name: getPaginationLabel(1, mockImages.length),
+        }),
+      );
 
-      expect(screen.getByTitle('scroll-to-item-1')).toHaveClass(
-        'slider-pagination-btn-active',
-      );
-      expect(screen.getByTitle('scroll-to-item-0')).toHaveClass(
-        'slider-pagination-btn',
-      );
+      expect(
+        screen.getByRole('tab', { name: getPaginationLabel(1, mockImages.length) }),
+      ).toHaveClass('slider-pagination-btn-active');
+      expect(
+        screen.getByRole('tab', { name: getPaginationLabel(0, mockImages.length) }),
+      ).toHaveClass('slider-pagination-btn');
     });
 
     it('calls handleCardClick with correct index when pagination button is clicked', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-item-2'));
+      fireEvent.click(
+        screen.getByRole('tab', {
+          name: getPaginationLabel(2, mockImages.length),
+        }),
+      );
 
       expect(mockHandleCardClick).toHaveBeenCalledWith(2);
     });
@@ -175,7 +208,9 @@ describe('Slider Component', () => {
     it('displays bullet character in pagination buttons', () => {
       renderSlider();
 
-      const paginationButtons = screen.getAllByTitle(/scroll-to-item-/);
+      const paginationButtons = screen.getAllByRole('tab', {
+        name: /Зображення \d+ з \d+/,
+      });
       paginationButtons.forEach(button => {
         expect(button).toHaveTextContent('•');
       });
@@ -186,10 +221,14 @@ describe('Slider Component', () => {
     it('resets to first image when route changes', async () => {
       const { rerender } = renderSlider(mockImages, '/initial');
 
-      fireEvent.click(screen.getByTitle('scroll-to-item-1'));
-      expect(screen.getByTitle('scroll-to-item-1')).toHaveClass(
-        'slider-pagination-btn-active',
+      fireEvent.click(
+        screen.getByRole('tab', {
+          name: getPaginationLabel(1, mockImages.length),
+        }),
       );
+      expect(
+        screen.getByRole('tab', { name: getPaginationLabel(1, mockImages.length) }),
+      ).toHaveClass('slider-pagination-btn-active');
 
       rerender(
         <MemoryRouter initialEntries={['/new-route']}>
@@ -198,9 +237,11 @@ describe('Slider Component', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByTitle('scroll-to-item-0')).toHaveClass(
-          'slider-pagination-btn',
-        );
+        expect(
+          screen.getByRole('tab', {
+            name: getPaginationLabel(0, mockImages.length),
+          }),
+        ).toHaveClass('slider-pagination-btn');
       });
     });
 
@@ -216,18 +257,30 @@ describe('Slider Component', () => {
       renderSlider([]);
 
       expect(screen.queryByTestId('slider-card')).not.toBeInTheDocument();
-      expect(screen.queryByTitle(/scroll-to-item-/)).not.toBeInTheDocument();
-      expect(screen.queryByTitle('scroll-to-left')).not.toBeInTheDocument();
-      expect(screen.queryByTitle('scroll-to-right')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('tab', { name: /Зображення \d+ з \d+/ }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Попереднє зображення' }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Наступне зображення' }),
+      ).not.toBeInTheDocument();
     });
 
     it('handles single image', () => {
       renderSlider(['single-image.jpg']);
 
       expect(screen.getByTestId('slider-card')).toBeInTheDocument();
-      expect(screen.getByTitle('scroll-to-item-0')).toBeInTheDocument();
-      expect(screen.queryByTitle('scroll-to-left')).not.toBeInTheDocument();
-      expect(screen.queryByTitle('scroll-to-right')).not.toBeInTheDocument();
+      expect(
+        screen.getByRole('tab', { name: 'Зображення 1 з 1' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Попереднє зображення' }),
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Наступне зображення' }),
+      ).not.toBeInTheDocument();
     });
 
     it('handles large number of images', () => {
@@ -235,26 +288,34 @@ describe('Slider Component', () => {
       renderSlider(manyImages);
 
       expect(screen.getAllByTestId('slider-card')).toHaveLength(10);
-      expect(screen.getAllByTitle(/scroll-to-item-/)).toHaveLength(10);
+      expect(
+        screen.getAllByRole('tab', { name: /Зображення \d+ з 10/ }),
+      ).toHaveLength(10);
     });
   });
 
   describe('Accessibility', () => {
-    it('provides descriptive titles for navigation buttons', () => {
+    it('provides descriptive aria-labels for navigation buttons', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
 
-      expect(screen.getByTitle('scroll-to-left')).toBeInTheDocument();
-      expect(screen.getByTitle('scroll-to-right')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Попереднє зображення' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Наступне зображення' }),
+      ).toBeInTheDocument();
     });
 
-    it('provides descriptive titles for pagination buttons', () => {
+    it('provides descriptive aria-labels for pagination buttons', () => {
       renderSlider();
 
       mockImages.forEach((_, index) => {
         expect(
-          screen.getByTitle(`scroll-to-item-${index}`),
+          screen.getByRole('tab', {
+            name: getPaginationLabel(index, mockImages.length),
+          }),
         ).toBeInTheDocument();
       });
     });
@@ -271,7 +332,7 @@ describe('Slider Component', () => {
     it('renders FontAwesome icons with correct props', () => {
       renderSlider();
 
-      fireEvent.click(screen.getByTitle('scroll-to-right'));
+      fireEvent.click(screen.getByRole('button', { name: 'Наступне зображення' }));
 
       const icons = screen.getAllByTestId('font-awesome-icon');
       expect(icons).toHaveLength(2);

@@ -133,6 +133,13 @@ header {
 
 .menu-icon {
   display: none;
+  padding: 0;
+  border: none;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
 }
 
 @media screen and (width <= 768px) {
@@ -140,6 +147,5 @@ header {
     position: relative;
     z-index: 9;
     display: block;
-    cursor: pointer;
   }
 }

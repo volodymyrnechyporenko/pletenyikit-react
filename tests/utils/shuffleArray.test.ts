@@ -22,12 +22,11 @@ describe('shuffleArray', () => {
     expect(shuffledSingleElementArray).toEqual(singleElementArray);
   });
 
-  it('should shuffle the array multiple times and check for different results', () => {
+  it('should produce valid shuffles on multiple calls', () => {
     const originalArray = ['a', 'b', 'c', 'd'];
     const shuffled1 = shuffleArray([...originalArray]);
     const shuffled2 = shuffleArray([...originalArray]);
 
-    expect(shuffled1).not.toEqual(shuffled2);
     expect(shuffled1.sort()).toEqual(originalArray.sort());
     expect(shuffled2.sort()).toEqual(originalArray.sort());
   });

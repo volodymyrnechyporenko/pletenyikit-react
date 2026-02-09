@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
             10:00 до 20:00):
           </p>
           <p>
-            <a href='tel:+380630546382' aria-label='pletenyikit-phone'>
+            <a href='tel:+380630546382' aria-label='Подзвонити Плетений КіТ'>
               +38 063 054 63 82
             </a>
           </p>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             <a
               href='https://www.facebook.com/PletenyiKiT'
               target='_blank'
-              aria-label='pletenyikit-on-facebook'
+              aria-label='Плетений КіТ у Facebook'
               rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faFacebookSquare} size='3x' />
             </a>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             <a
               href='https://www.instagram.com/pletenyi_kit/'
               target='_blank'
-              aria-label='pletenyikit-on-instagram'
+              aria-label='Плетений КіТ в Instagram'
               rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faInstagram} size='3x' />
             </a>

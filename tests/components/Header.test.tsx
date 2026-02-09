@@ -8,20 +8,14 @@ import {
 } from '../../src/constants/navigation';
 import Header from '../../src/components/Header/Header';
 
-const renderStyles = (icon: HTMLElement, sidebar: HTMLElement | null) => {
-  fireEvent.click(icon);
+const renderStyles = (menuButton: HTMLElement, sidebar: HTMLElement | null) => {
+  fireEvent.click(menuButton);
   expect(sidebar).toHaveClass('active');
-  expect(icon).toHaveAttribute(
-    'data-icon',
-    JSON.stringify({ iconName: 'times', prefix: 'fas' }),
-  );
+  expect(menuButton).toHaveAttribute('aria-expanded', 'true');
 
-  fireEvent.click(icon);
+  fireEvent.click(menuButton);
   expect(sidebar).not.toHaveClass('active');
-  expect(icon).toHaveAttribute(
-    'data-icon',
-    JSON.stringify({ iconName: 'bars', prefix: 'fas' }),
-  );
+  expect(menuButton).toHaveAttribute('aria-expanded', 'false');
 };
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
@@ -130,6 +124,9 @@ describe('Header Component', () => {
         </RouterWrapper>,
       );
 
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
+      expect(menuButton).toBeInTheDocument();
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
       const icon = screen.getByTestId('font-awesome-icon');
       expect(icon).toBeInTheDocument();
       expect(icon).toHaveAttribute('data-size', '2x');
@@ -210,16 +207,13 @@ describe('Header Component', () => {
         </RouterWrapper>,
       );
 
-      const icon = screen.getByTestId('font-awesome-icon');
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
       const sidebar = screen.getByRole('list').parentElement;
 
       expect(sidebar).not.toHaveClass('active');
-      expect(icon).toHaveAttribute(
-        'data-icon',
-        JSON.stringify({ iconName: 'bars', prefix: 'fas' }),
-      );
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
 
-      renderStyles(icon, sidebar);
+      renderStyles(menuButton, sidebar);
     });
 
     it('closes burger menu when sidebar is clicked', () => {
@@ -229,18 +223,15 @@ describe('Header Component', () => {
         </RouterWrapper>,
       );
 
-      const icon = screen.getByTestId('font-awesome-icon');
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
       const sidebar = screen.getByRole('list').parentElement;
 
-      fireEvent.click(icon);
+      fireEvent.click(menuButton);
       expect(sidebar).toHaveClass('active');
 
       fireEvent.click(sidebar!);
       expect(sidebar).not.toHaveClass('active');
-      expect(icon).toHaveAttribute(
-        'data-icon',
-        JSON.stringify({ iconName: 'bars', prefix: 'fas' }),
-      );
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
     });
   });
 
@@ -324,13 +315,13 @@ describe('Header Component', () => {
         </RouterWrapper>,
       );
 
-      const icon = screen.getByTestId('font-awesome-icon');
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
       const sidebar = screen.getByRole('list').parentElement;
 
       expect(sidebar).toHaveClass('sidebar');
       expect(sidebar?.className).not.toContain('active');
 
-      fireEvent.click(icon);
+      fireEvent.click(menuButton);
       expect(sidebar?.className).toContain('sidebar');
       expect(sidebar?.className).toContain('active');
     });
@@ -355,16 +346,16 @@ describe('Header Component', () => {
       );
     });
 
-    it('burger menu icon is keyboard accessible', () => {
+    it('burger menu button is keyboard accessible', () => {
       render(
         <RouterWrapper>
           <Header />
         </RouterWrapper>,
       );
 
-      const icon = screen.getByTestId('font-awesome-icon');
-      expect(icon).toHaveAttribute('role', 'button');
-      expect(icon).toHaveAttribute('tabIndex', '0');
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+      expect(menuButton).toHaveAttribute('aria-controls', 'sidebar-menu');
     });
   });
 
@@ -376,11 +367,11 @@ describe('Header Component', () => {
         </RouterWrapper>,
       );
 
-      const icon = screen.getByTestId('font-awesome-icon');
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
       const sidebar = screen.getByRole('list').parentElement;
 
       for (let i = 0; i < 3; i++) {
-        renderStyles(icon, sidebar);
+        renderStyles(menuButton, sidebar);
       }
     });
   });
