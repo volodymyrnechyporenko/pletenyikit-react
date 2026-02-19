@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+# Pletenyi Kit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React single-page application for a Ukrainian handcrafted product catalog (toys, accessories, pillows, kitchen items) with category listing, product details, and care information.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** with **TypeScript**
+- **Vite** for build and dev server
+- **React Router 7** for routing and lazy-loaded route chunks
+- **SCSS** for styles (with Stylelint)
+- **Font Awesome** for icons
+- **Jest** + **Testing Library** for tests
 
-## Expanding the ESLint configuration
+## Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Entry:** `main.tsx` renders `App`, which provides React Router. Global styles are imported from `src/assets/scss/style.scss`.
+- **Layout:** All routes are wrapped in `Layout` (skip link, `Header`, main content, `ScrollToTop`, `Footer`). `ScrollRestoration` is used for scroll position on navigation.
+- **Routing:** `createBrowserRouter` in `src/router/router.tsx` defines a root layout and child routes:
+  - `/` — main landing
+  - `/:category` — product list (toys, accessories, pillows, kitchen), lazy-loaded
+  - `/:category/:link` — product details, lazy-loaded
+  - `/about-pletenyi-kit` — about page
+  - `/care-conditions` — care conditions page
+- **Data:** Category products and headings come from JSON in `src/data/` (toys, accessories, pillows, kitchen). The `useDetectDataType` hook reads the current `category` from the URL and loads the matching dataset.
+- **UI:** Header (desktop nav + mobile sidebar), product list with sort, product details with image slider and similar items, scroll-to-top button. Mobile menu is implemented as an accessible dialog (focus, Escape, ARIA).
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Scripts
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+| Command   | Description                    |
+| --------- | ------------------------------ |
+| `npm run dev`    | Start Vite dev server          |
+| `npm run build`  | TypeScript build + Vite build + sitemap generation |
+| `npm run preview`| Preview production build       |
+| `npm run test`   | Run Jest tests                 |
+| `npm run lint`   | Stylelint (SCSS) + ESLint (TS/TSX) |
+| `npm run ci`     | Lint, test, and build          |

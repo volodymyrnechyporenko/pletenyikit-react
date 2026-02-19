@@ -85,7 +85,7 @@ describe('useDetectSliderSwipe', () => {
     );
   });
 
-  test('should calculate correct index when scrolling', () => {
+  test('should calculate correct index when scrolling', async () => {
     const routeChanged = false;
 
     renderHook(() =>
@@ -94,20 +94,26 @@ describe('useDetectSliderSwipe', () => {
 
     const scrollHandler = addEventListenerSpy.mock.calls[0][1] as EventListener;
 
+    const flushRaf = () =>
+      new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+
     Object.defineProperty(mockContainerElement, 'scrollLeft', { value: 0 });
     scrollHandler(new Event('scroll'));
+    await flushRaf();
     expect(mockSetCurrentIndex).toHaveBeenCalledWith(0);
 
     Object.defineProperty(mockContainerElement, 'scrollLeft', { value: 300 });
     scrollHandler(new Event('scroll'));
+    await flushRaf();
     expect(mockSetCurrentIndex).toHaveBeenCalledWith(1);
 
     Object.defineProperty(mockContainerElement, 'scrollLeft', { value: 450 });
     scrollHandler(new Event('scroll'));
+    await flushRaf();
     expect(mockSetCurrentIndex).toHaveBeenCalledWith(2);
   });
 
-  test('should handle case when children[0] is undefined', () => {
+  test('should handle case when children[0] is undefined', async () => {
     const routeChanged = false;
     const emptyContainerElement = document.createElement('div');
     const emptyContainerRef = { current: emptyContainerElement };
@@ -131,6 +137,7 @@ describe('useDetectSliderSwipe', () => {
     Object.defineProperty(emptyContainerElement, 'scrollLeft', { value: 100 });
     scrollHandler(new Event('scroll'));
 
+    await new Promise<void>(r => requestAnimationFrame(() => r()));
     expect(mockSetCurrentIndex).toHaveBeenCalled();
   });
 

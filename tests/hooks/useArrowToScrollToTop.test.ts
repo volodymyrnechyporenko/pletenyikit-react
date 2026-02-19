@@ -105,6 +105,7 @@ describe('useArrowToScrollToTop', () => {
     expect(addEventListenerSpy).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
+      { passive: true },
     );
 
     unmount();

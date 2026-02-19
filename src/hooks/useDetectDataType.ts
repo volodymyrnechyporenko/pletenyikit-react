@@ -6,6 +6,15 @@ import kitchen from './../data/kitchen.json';
 import { useParams } from 'react-router-dom';
 import { ItemDetails } from '../interfaces/interfaces';
 
+const categorySources: {
+  [key: string]: { source: ItemDetails[]; heading: string };
+} = {
+  toys: { source: toys as ItemDetails[], heading: 'Іграшки' },
+  accessories: { source: accessories as ItemDetails[], heading: 'Аксесуари' },
+  pillows: { source: pillows as ItemDetails[], heading: 'Подушки' },
+  kitchen: { source: kitchen as ItemDetails[], heading: 'Для кухні' },
+};
+
 const useDetectDataType = () => {
   const [products, setProducts] = useState<ItemDetails[]>([]);
 
@@ -14,29 +23,11 @@ const useDetectDataType = () => {
   const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
-    const categoryData: {
-      [key: string]: { data: ItemDetails[]; heading: string };
-    } = {
-      toys: { data: JSON.parse(JSON.stringify(toys)), heading: 'Іграшки' },
-      accessories: {
-        data: JSON.parse(JSON.stringify(accessories)),
-        heading: 'Аксесуари',
-      },
-      pillows: {
-        data: JSON.parse(JSON.stringify(pillows)),
-        heading: 'Подушки',
-      },
-      kitchen: {
-        data: JSON.parse(JSON.stringify(kitchen)),
-        heading: 'Для кухні',
-      },
-    };
+    const selected = categorySources[category as string];
 
-    const selectedCategory = categoryData[category as string];
-
-    if (selectedCategory) {
-      setProducts(selectedCategory.data);
-      setHeading(selectedCategory.heading);
+    if (selected) {
+      setProducts(structuredClone(selected.source));
+      setHeading(selected.heading);
     } else {
       setProducts([]);
       setHeading('Товари');

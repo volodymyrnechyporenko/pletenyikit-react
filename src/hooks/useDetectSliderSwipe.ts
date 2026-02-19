@@ -8,19 +8,24 @@ const useDetectSliderSwipe = (
   useEffect(() => {
     const container = containerRef.current;
     if (container && !routeChanged) {
+      let rafId: number | null = null;
+
       const handleScroll = () => {
-        if (!routeChanged) {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
           const cardWidth =
             (container.children[0] as HTMLDivElement)?.offsetWidth || 0;
           const scrollLeft = container.scrollLeft;
           const index = Math.round(scrollLeft / cardWidth);
           setCurrentIndex(index);
-        }
+        });
       };
 
       container.addEventListener('scroll', handleScroll);
       return () => {
         container.removeEventListener('scroll', handleScroll);
+        if (rafId !== null) cancelAnimationFrame(rafId);
       };
     }
   }, [containerRef, setCurrentIndex, routeChanged]);

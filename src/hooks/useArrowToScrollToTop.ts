@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const THROTTLE_MS = 100;
+
 const useArrowToScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -11,12 +13,18 @@ const useArrowToScrollToTop = () => {
     });
   };
 
-  const scrollListener = () => {
-    setIsVisible(window.scrollY > 300);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', scrollListener);
+    let lastCall = 0;
+
+    const scrollListener = () => {
+      const now = Date.now();
+      if (lastCall === 0 || now - lastCall >= THROTTLE_MS) {
+        lastCall = now;
+        setIsVisible(window.scrollY > 300);
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', scrollListener);

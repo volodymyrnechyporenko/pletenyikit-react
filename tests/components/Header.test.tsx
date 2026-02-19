@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import {
@@ -43,10 +43,6 @@ jest.mock('@fortawesome/free-solid-svg-icons', () => ({
   faBars: { iconName: 'bars', prefix: 'fas' },
   faTimes: { iconName: 'times', prefix: 'fas' },
 }));
-
-jest.mock('/img/PletenyiKit_logo_round.png', () => 'mocked-logo-path', {
-  virtual: true,
-});
 
 jest.mock('../../src/components/Header/Header.module.scss', () => ({
   nav: 'nav',
@@ -103,7 +99,7 @@ describe('Header Component', () => {
 
       const logo = screen.getByAltText('pletenyikit');
       expect(logo).toBeInTheDocument();
-      expect(logo).toHaveAttribute('src', 'mocked-logo-path');
+      expect(logo).toHaveAttribute('src', '/img/PletenyiKit_logo_round.png');
     });
 
     it('renders logo link to home page', () => {
@@ -283,6 +279,26 @@ describe('Header Component', () => {
         expect(link).toHaveTextContent(expectedOrder[index].name);
         expect(link).toHaveAttribute('href', expectedOrder[index].path);
       });
+    });
+
+    it('closes burger menu when a sidebar link is clicked without toggling back open', () => {
+      render(
+        <RouterWrapper>
+          <Header />
+        </RouterWrapper>,
+      );
+
+      const menuButton = screen.getByRole('button', { name: /відкрити меню/i });
+      const sidebar = screen.getByRole('dialog', { name: 'Меню навігації' });
+
+      fireEvent.click(menuButton);
+      expect(sidebar).toHaveClass('active');
+
+      const sidebarToysLink = within(sidebar).getByRole('link', { name: 'Іграшки' });
+      fireEvent.click(sidebarToysLink);
+
+      expect(sidebar).not.toHaveClass('active');
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
     });
   });
 

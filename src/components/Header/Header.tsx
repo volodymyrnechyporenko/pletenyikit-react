@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import logo from '/img/PletenyiKit_logo_round.png';
 import styles from './Header.module.scss';
 import { leftNavigation, rightNavigation } from '../../constants/navigation';
+
+const LOGO_SRC = '/img/PletenyiKit_logo_round.png';
 
 const SIDEBAR_ID = 'sidebar-menu';
 
@@ -33,8 +34,8 @@ const Header: React.FC = () => {
         setIsBurgerActive(false);
       }
     };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    globalThis.addEventListener('keydown', onKeyDown);
+    return () => globalThis.removeEventListener('keydown', onKeyDown);
   }, [isBurgerActive]);
 
   const icon = isBurgerActive ? faTimes : faBars;
@@ -55,7 +56,7 @@ const Header: React.FC = () => {
         </div>
         <div className={styles['nav-logo']}>
           <Link to='/'>
-            <img src={logo} alt='pletenyikit' />
+            <img src={LOGO_SRC} alt='pletenyikit' />
           </Link>
         </div>
         <div className={styles['nav-right']}>
@@ -92,7 +93,10 @@ const Header: React.FC = () => {
               <Link
                 to={item.path}
                 ref={index === 0 ? firstLinkRef : undefined}
-                onClick={() => setIsBurgerActive(false)}>
+                onClick={e => {
+                  e.stopPropagation();
+                  setIsBurgerActive(false);
+                }}>
                 {item.name}
               </Link>
             </li>
