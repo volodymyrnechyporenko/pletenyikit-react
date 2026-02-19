@@ -135,16 +135,6 @@
         "img": "mitenky_olyvkovi_kosy_01.jpg",
         "price": 180,
         "link": "mitenky-olyvkovi-kosy"
-      },
-      {
-        "img": "mitenky-kotyky-zhovti-temni-01.jpg",
-        "price": 300,
-        "link": "mitenky-kotyky-zhovti-temni"
-      },
-      {
-        "img": "mitenky-kotyky-zhovti-pukhnasti-01.jpg",
-        "price": 300,
-        "link": "mitenky-kotyky-zhovti-pukhnasti"
       }
     ]
   },
@@ -643,66 +633,6 @@
         "img": "malynovi_smugasti_rukavytsi_01.jpg",
         "price": 300,
         "link": "malynovi-smugasti-rukavytsi"
-      }
-    ]
-  },
-  {
-    "id": 44,
-    "name": "Мітенки-котики жовті темніші",
-    "description": [
-      "Мітенки-котики гарного темно-жовтого кольору - чудове оригінальне доповлення до демісезонного, або й зимового гардеробу. Ручне плетіння та вишивка, м'яка пряжа та універсальний розмір, завдяки плeтенню 'гумка', на долоні.",
-      "Матеріал: акрил. Розмір: М"
-    ],
-    "images": [
-      "mitenky-kotyky-zhovti-temni-01.jpg",
-      "mitenky-kotyky-zhovti-temni-02.jpg",
-      "mitenky-kotyky-zhovti-temni-03.jpg",
-      "mitenky-kotyky-zhovti-temni-04.jpg",
-      "mitenky-kotyky-zhovti-temni-05.jpg"
-    ],
-    "price": 300,
-    "link": "mitenky-kotyky-zhovti-temni",
-    "category": "Одяг",
-    "similar": [
-      {
-        "img": "mitenky_sovy_buzkovi_01.jpg",
-        "price": 270,
-        "link": "mitenky-sovy-buzkovi"
-      },
-      {
-        "img": "mitenky-kotyky-zhovti-pukhnasti-01.jpg",
-        "price": 300,
-        "link": "mitenky-kotyky-zhovti-pukhnasti"
-      }
-    ]
-  },
-  {
-    "id": 45,
-    "name": "Мітенки-котики жовті пухнасті",
-    "description": [
-      "Мітенки-котики приємного гірчичного кольору 100% піднімуть настрій та додадуть сонячного настрою! Пухнаста тепла ниточка не лише підніматиме настрій, а й зігріє долоню.",
-      "Ручне плетіння та вишивка, м'яка пряжа та універсальний розмір, завдяки платенню 'гумка' на долоні.",
-      "Матеріал: акрил. Розмір: М"
-    ],
-    "images": [
-      "mitenky-kotyky-zhovti-pukhnasti-01.jpg",
-      "mitenky-kotyky-zhovti-pukhnasti-02.jpg",
-      "mitenky-kotyky-zhovti-pukhnasti-03.jpg",
-      "mitenky-kotyky-zhovti-pukhnasti-04.jpg"
-    ],
-    "price": 300,
-    "link": "mitenky-kotyky-zhovti-pukhnasti",
-    "category": "Одяг",
-    "similar": [
-      {
-        "img": "mitenky_sovy_buzkovi_01.jpg",
-        "price": 270,
-        "link": "mitenky-sovy-buzkovi"
-      },
-      {
-        "img": "mitenky-kotyky-zhovti-temni-01.jpg",
-        "price": 300,
-        "link": "mitenky-kotyky-zhovti-temni"
       }
     ]
   }
