@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import styles from './ProductDetails.module.scss';
 import Slider from '../Slider/Slider';
 import SimilarItem from '../SimilarItem/SimilarItem';
 import useDetectDataType from '../../hooks/useDetectDataType';
 import { ItemDetails } from '../../interfaces/interfaces';
+
+const baseUrl = 'https://pletenyikit.com';
 
 const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();
@@ -54,9 +57,23 @@ const ProductDetails: React.FC = () => {
   const categoryName = product.category || 'Товар';
   const productName = product.name || '';
   const productPrice = product.price ?? 0;
+  const metaDescription =
+    description.length > 0
+      ? description[0].slice(0, 160)
+      : `${productName} — плетений виріб ручної роботи. Ціна ${productPrice} грн.`;
+  const canonicalUrl = `${baseUrl}/${category}/${link}`;
 
   return (
     <>
+      <Helmet>
+        <title>{productName}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={`${productName} | Плетений КіТ`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="product" />
+      </Helmet>
       <div className='heading'>
         <h1>{categoryName}</h1>
       </div>

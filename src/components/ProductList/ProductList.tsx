@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState, } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import styles from './ProductList.module.scss';
 import { filterTitle, sortByCheapTxt, sortByExpensiveTxt, } from '../../constants/texts';
 import Product from '../Product/Product';
 import useDetectDataType from '../../hooks/useDetectDataType';
 import { ItemDetails } from '../../interfaces/interfaces';
+
+const baseUrl = 'https://pletenyikit.com';
 
 type SortOrder = 'none' | 'low' | 'high';
 
@@ -72,8 +75,19 @@ const ProductList: React.FC = () => {
     setSortOrder(prev => (prev === 'low' ? 'none' : 'low'));
   }, []);
 
+  const canonicalUrl = category ? `${baseUrl}/${category}` : baseUrl;
+  const metaDescription = `Купити плетені ${heading?.toLowerCase() ?? 'товари'} — Плетений КіТ. Ручна робота, якісна пряжа.`;
+
   return (
     <>
+      <Helmet>
+        <title>{heading ?? 'Категорія'}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={`${heading ?? 'Категорія'} | Плетений КіТ`} />
+        <meta property="og:description" content={metaDescription} />
+      </Helmet>
       <div className='heading'>
         <h1 data-testid='heading-title'>{heading}</h1>
       </div>
