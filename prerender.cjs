@@ -24,6 +24,7 @@ const routes = [
   '/kitchen',
   '/about-pletenyi-kit',
   '/care-conditions',
+  '/404',
   ...accessories.map((item) => '/accessories/' + item.link),
   ...kitchen.map((item) => '/kitchen/' + item.link),
   ...pillows.map((item) => '/pillows/' + item.link),
@@ -115,7 +116,9 @@ function runPrerender() {
         const outPath =
           route === '/'
             ? path.join(distDir, 'index.html')
-            : path.join(distDir, route, 'index.html');
+            : route === '/404'
+              ? path.join(distDir, '404.html')
+              : path.join(distDir, route, 'index.html');
         const dir = path.dirname(outPath);
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(outPath, html, 'utf-8');

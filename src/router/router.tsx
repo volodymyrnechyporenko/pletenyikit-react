@@ -1,17 +1,18 @@
 import {
   createBrowserRouter,
-  Outlet,
+  Navigate,
   ScrollRestoration,
   useParams,
 } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
+import { RouteGuard } from './RouteGuard';
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: (
       <Layout>
-        <Outlet />
+        <RouteGuard />
         <ScrollRestoration />
       </Layout>
     ),
@@ -60,6 +61,17 @@ export const routes = createBrowserRouter([
           const Component = await import('../pages/CareConditions');
           return { Component: Component.default };
         },
+      },
+      {
+        path: '/404',
+        lazy: async () => {
+          const Component = await import('../pages/NotFound');
+          return { Component: Component.default };
+        },
+      },
+      {
+        path: '*',
+        element: <Navigate to="/404" replace />,
       },
     ],
   },

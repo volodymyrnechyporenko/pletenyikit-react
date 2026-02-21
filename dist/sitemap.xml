@@ -8,12 +8,12 @@
     <priority>1</priority>
   </url>
   <url>
-    <url>https://pletenyikit.com/accessories</url>
+    <url>https://pletenyikit.com/toys</url>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <url>https://pletenyikit.com/kitchen</url>
+    <url>https://pletenyikit.com/accessories</url>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
@@ -23,7 +23,7 @@
     <priority>1</priority>
   </url>
   <url>
-    <url>https://pletenyikit.com/toys</url>
+    <url>https://pletenyikit.com/kitchen</url>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
