@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import styles from './AboutUs.module.scss';
 import { aboutUsTitle, aboutUsValues } from '../../constants/texts';
 
@@ -9,14 +8,12 @@ const aboutDescription =
 
 const AboutUs: React.FC = () => (
   <>
-    <Helmet>
-      <title>Про нас</title>
-      <meta name="description" content={aboutDescription} />
-      <link rel="canonical" href={aboutUrl} />
-      <meta property="og:url" content={aboutUrl} />
-      <meta property="og:title" content="Про нас | Плетений КіТ" />
-      <meta property="og:description" content={aboutDescription} />
-    </Helmet>
+    <title>Про нас | Плетений КіТ</title>
+    <meta name="description" content={aboutDescription} />
+    <link rel="canonical" href={aboutUrl} />
+    <meta property="og:url" content={aboutUrl} />
+    <meta property="og:title" content="Про нас | Плетений КіТ" />
+    <meta property="og:description" content={aboutDescription} />
     <div className='heading'>
       <h1>Про нас</h1>
       <h2>{aboutUsTitle}</h2>

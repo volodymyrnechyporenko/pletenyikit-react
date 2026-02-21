@@ -4,6 +4,11 @@ import { BUILD_DATE } from '../constants/build-info';
 import categories from './../data/categories.json';
 import Product, { ProductItem } from '../components/Product/Product';
 
+const defaultTitle = 'Плетений КіТ — плетені аксесуари та ручна робота';
+const defaultDescription =
+  'Плетені аксесуари для вас та вашої оселі: іграшки, одяг, подушки, для кухні. Найгарніша реінкарнація пряжі!';
+const baseUrl = 'https://pletenyikit.com';
+
 const HomePage: React.FC = () => {
   const formattedCategories: ProductItem[] = JSON.parse(
     JSON.stringify(categories),
@@ -11,6 +16,14 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <title>{defaultTitle}</title>
+      <meta name="description" content={defaultDescription} />
+      <link rel="canonical" href={baseUrl} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={baseUrl} />
+      <meta property="og:title" content={defaultTitle} />
+      <meta property="og:description" content={defaultDescription} />
+      <meta property="og:locale" content="uk_UA" />
       <div id={`updated-${BUILD_DATE}`} className='heading'>
         <h1>Плетений КіТ</h1>
         <h2>

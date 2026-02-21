@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState, } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import styles from './ProductList.module.scss';
 import { filterTitle, sortByCheapTxt, sortByExpensiveTxt, } from '../../constants/texts';
 import Product from '../Product/Product';
@@ -78,16 +77,16 @@ const ProductList: React.FC = () => {
   const canonicalUrl = category ? `${baseUrl}/${category}` : baseUrl;
   const metaDescription = `Купити плетені ${heading?.toLowerCase() ?? 'товари'} — Плетений КіТ. Ручна робота, якісна пряжа.`;
 
+  const pageTitle = `${heading ?? 'Категорія'} | Плетений КіТ`;
+
   return (
     <>
-      <Helmet>
-        <title>{heading ?? 'Категорія'}</title>
-        <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={`${heading ?? 'Категорія'} | Плетений КіТ`} />
-        <meta property="og:description" content={metaDescription} />
-      </Helmet>
+      <title>{pageTitle}</title>
+      <meta name="description" content={metaDescription} />
+      <link rel="canonical" href={canonicalUrl} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={metaDescription} />
       <div className='heading'>
         <h1 data-testid='heading-title'>{heading}</h1>
       </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import Slider from '../components/Slider/Slider';
 import useRandomImages from '../hooks/useRandomImages';
 import { careConditions, careConditionsTitle } from '../constants/texts';
@@ -13,14 +12,12 @@ const CareConditions: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Умови догляду</title>
-        <meta name="description" content={careDescription} />
-        <link rel="canonical" href={careUrl} />
-        <meta property="og:url" content={careUrl} />
-        <meta property="og:title" content="Умови догляду | Плетений КіТ" />
-        <meta property="og:description" content={careDescription} />
-      </Helmet>
+      <title>Умови догляду | Плетений КіТ</title>
+      <meta name="description" content={careDescription} />
+      <link rel="canonical" href={careUrl} />
+      <meta property="og:url" content={careUrl} />
+      <meta property="og:title" content="Умови догляду | Плетений КіТ" />
+      <meta property="og:description" content={careDescription} />
       <div className='heading'>
         <h1>{careConditionsTitle}</h1>
       </div>

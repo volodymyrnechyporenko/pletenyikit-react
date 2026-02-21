@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import styles from './ProductDetails.module.scss';
 import Slider from '../Slider/Slider';
 import SimilarItem from '../SimilarItem/SimilarItem';
@@ -63,17 +62,17 @@ const ProductDetails: React.FC = () => {
       : `${productName} — плетений виріб ручної роботи. Ціна ${productPrice} грн.`;
   const canonicalUrl = `${baseUrl}/${category}/${link}`;
 
+  const pageTitle = `${productName} | Плетений КіТ`;
+
   return (
     <>
-      <Helmet>
-        <title>{productName}</title>
-        <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={`${productName} | Плетений КіТ`} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="product" />
-      </Helmet>
+      <title>{pageTitle}</title>
+      <meta name="description" content={metaDescription} />
+      <link rel="canonical" href={canonicalUrl} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="product" />
       <div className='heading'>
         <h1>{categoryName}</h1>
       </div>

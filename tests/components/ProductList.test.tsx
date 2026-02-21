@@ -1,7 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import '@testing-library/jest-dom';
 import useDetectDataType from '../../src/hooks/useDetectDataType';
 import ProductList from '../../src/components/ProductList/ProductList';
@@ -44,9 +43,7 @@ const mockUseDetectDataType = useDetectDataType as jest.MockedFunction<
 const mockSetProducts = jest.fn();
 
 const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <HelmetProvider>
-    <BrowserRouter>{children}</BrowserRouter>
-  </HelmetProvider>
+  <BrowserRouter>{children}</BrowserRouter>
 );
 
 const sortByCheapTestId = 'sort-by-cheap';
