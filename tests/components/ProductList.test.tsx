@@ -234,6 +234,46 @@ describe('ProductList Component', () => {
 
       expect(mockProducts).toEqual(originalProducts);
     });
+
+    it('sortByLowPrice keeps low-to-high order when clicked multiple times', () => {
+      const screen = render(
+        <TestWrapper>
+          <ProductList />
+        </TestWrapper>,
+      );
+
+      const sortByCheapButton = screen.getByTestId(sortByCheapTestId);
+      fireEvent.click(sortByCheapButton);
+      fireEvent.click(sortByCheapButton);
+      fireEvent.click(sortByCheapButton);
+
+      const lowToHighOrder = [
+        { id: 2, images: ['image2.jpg'], link: 'product-2', name: 'Product 2', price: 50 },
+        { id: 1, images: ['image1.jpg'], link: 'product-1', name: 'Product 1', price: 100 },
+        { id: 3, images: ['image3.jpg'], link: 'product-3', name: 'Product 3', price: 200 },
+      ];
+      expect(mockSetProducts).toHaveBeenLastCalledWith(lowToHighOrder);
+    });
+
+    it('sortByHighPrice keeps high-to-low order when clicked multiple times', () => {
+      const screen = render(
+        <TestWrapper>
+          <ProductList />
+        </TestWrapper>,
+      );
+
+      const sortByExpensiveButton = screen.getByTestId(sortByExpensiveTestId);
+      fireEvent.click(sortByExpensiveButton);
+      fireEvent.click(sortByExpensiveButton);
+      fireEvent.click(sortByExpensiveButton);
+
+      const highToLowOrder = [
+        { id: 3, images: ['image3.jpg'], link: 'product-3', name: 'Product 3', price: 200 },
+        { id: 1, images: ['image1.jpg'], link: 'product-1', name: 'Product 1', price: 100 },
+        { id: 2, images: ['image2.jpg'], link: 'product-2', name: 'Product 2', price: 50 },
+      ];
+      expect(mockSetProducts).toHaveBeenLastCalledWith(highToLowOrder);
+    });
   });
 
   describe('Edge Cases', () => {

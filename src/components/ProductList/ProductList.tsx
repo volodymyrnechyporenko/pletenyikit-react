@@ -67,11 +67,11 @@ const ProductList: React.FC = () => {
   }, [sortOrder, sortedProducts, setProducts]);
 
   const sortByHighPrice = useCallback(() => {
-    setSortOrder(prev => (prev === 'high' ? 'none' : 'high'));
+    setSortOrder('high');
   }, []);
 
   const sortByLowPrice = useCallback(() => {
-    setSortOrder(prev => (prev === 'low' ? 'none' : 'low'));
+    setSortOrder('low');
   }, []);
 
   const canonicalUrl = category ? `${baseUrl}/${category}` : baseUrl;
