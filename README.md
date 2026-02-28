@@ -34,3 +34,25 @@ A React single-page application for a Ukrainian handcrafted product catalog (toy
 | `npm run test`   | Run Jest tests                 |
 | `npm run lint`   | Stylelint (SCSS) + ESLint (TS/TSX) |
 | `npm run ci`     | Lint, test, and build          |
+
+## Deploying to cPanel
+
+If cPanel Git "Update" fails with **Error 128** ("Diverging branches can't be fast-forwarded"), the server’s branch has diverged from `origin/main`. Fix it **on the server** (cPanel Terminal or SSH).
+
+**One-time fix (recommended if you don’t need server-only commits):**
+
+```bash
+cd /path/to/your/repo/on/server   # e.g. ~/pletenyikit-react
+git fetch origin
+git reset --hard origin/main
+```
+
+**Alternative (keep server history):** Run `git merge --no-ff origin/main -m "Merge origin/main"` instead of `git reset --hard origin/main`.
+
+**Future updates:** From the repo root on the server, run:
+
+```bash
+sh scripts/cpanel-update.sh
+```
+
+Do not commit on the server; push from your machine (or CI) and then update on the server so branches don’t diverge again.
