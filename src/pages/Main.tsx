@@ -10,9 +10,7 @@ const defaultDescription =
 const baseUrl = 'https://pletenyikit.com';
 
 const HomePage: React.FC = () => {
-  const formattedCategories: ProductItem[] = JSON.parse(
-    JSON.stringify(categories),
-  );
+  const formattedCategories: ProductItem[] = structuredClone(categories);
 
   return (
     <>
@@ -32,7 +30,7 @@ const HomePage: React.FC = () => {
           Плетені аксесуари для вас та вашої оселі
         </h2>
       </div>
-      <div className='product-category'>
+      <div className='product-category product-category-home'>
         {formattedCategories.map(category => (
           <Link key={category.id} to={category.link}>
             <Product product={category} type='category' />
