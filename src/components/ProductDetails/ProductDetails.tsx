@@ -87,9 +87,7 @@ const ProductDetails: React.FC = () => {
         <div className='item-right'>
           <h2>{productName}</h2>
           {description.length > 0 &&
-            description.map((text, index) => (
-              <p key={`desc-${index}`}>{text}</p>
-            ))}
+            description.map((text) => <p key={text}>{text}</p>)}
           <div className='price'>{productPrice} грн</div>
         </div>
       </div>
