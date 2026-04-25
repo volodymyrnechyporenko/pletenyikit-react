@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetails.module.scss';
 import Slider from '../Slider/Slider';
 import SimilarItem from '../SimilarItem/SimilarItem';
@@ -10,9 +10,19 @@ const baseUrl = 'https://pletenyikit.com';
 
 const ProductDetails: React.FC = () => {
   const { link } = useParams<{ link: string }>();
+  const navigate = useNavigate();
   const [product, setProduct] = useState<ItemDetails | null>(null);
 
   const { category, products } = useDetectDataType();
+
+  const currentIndex = link ? products.findIndex(p => p.link === link) : -1;
+  const canNavigateBetweenProducts = products.length > 1 && currentIndex >= 0;
+  const prevProduct = canNavigateBetweenProducts
+    ? products[(currentIndex - 1 + products.length) % products.length]
+    : null;
+  const nextProduct = canNavigateBetweenProducts
+    ? products[(currentIndex + 1) % products.length]
+    : null;
 
   useEffect(() => {
     if (link) {
@@ -66,6 +76,28 @@ const ProductDetails: React.FC = () => {
 
   return (
     <>
+      {canNavigateBetweenProducts && prevProduct?.link && nextProduct?.link && (
+        <div className={styles['edge-nav']}>
+          <button
+            type="button"
+            className={`${styles['edge-nav-button']} ${styles['edge-nav-button-left']}`}
+            aria-label="Попередній товар"
+            data-testid="product-details-prev"
+            onClick={() => navigate(`/${category}/${prevProduct.link}`)}
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className={`${styles['edge-nav-button']} ${styles['edge-nav-button-right']}`}
+            aria-label="Наступний товар"
+            data-testid="product-details-next"
+            onClick={() => navigate(`/${category}/${nextProduct.link}`)}
+          >
+            ›
+          </button>
+        </div>
+      )}
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
       <link rel="canonical" href={canonicalUrl} />

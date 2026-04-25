@@ -16,6 +16,58 @@
   animation: goods-cat ease 0.3s;
 }
 
+.edge-nav {
+  display: none;
+}
+
+@media screen and (width >=1025px) {
+  .edge-nav {
+    display: block;
+  }
+
+  .edge-nav-button {
+    position: fixed;
+    z-index: 50;
+    top: 50%;
+    display: flex;
+    width: 56px;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    margin: 0;
+    backdrop-filter: blur(4px);
+    background: rgb(0 0 0 / 35%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 44px;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateY(-50%);
+    user-select: none;
+  }
+
+  .edge-nav-button-left {
+    left: 0;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .edge-nav-button-right {
+    right: 0;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .edge-nav-button:hover {
+    background: rgb(0 0 0 / 50%);
+  }
+
+  .edge-nav-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
 .skeleton-heading,
 .skeleton-title,
 .skeleton-text,
