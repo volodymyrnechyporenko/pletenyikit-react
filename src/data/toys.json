@@ -15,40 +15,7 @@
     ],
     "price": 100,
     "link": "myshka-bila",
-    "category": "Іграшки",
-    "similar": [
-      {
-        "img": "myshoigrashka_temno-sira_01.jpg",
-        "price": 100,
-        "link": "myshka-temno-sira"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Мишка темно-сіра",
-    "description": [
-      "Іграшка плетена вручну з м'якої меланжевої пряжі, пухкенька та приємна на дотик.",
-      "Матеріали: акрил, холофайбер (наповнення), намистинки (очі).",
-      "Розмір: 14/9см."
-    ],
-    "images": [
-      "myshoigrashka_temno-sira_01.jpg",
-      "myshoigrashka_temno-sira_02.jpg",
-      "myshoigrashka_temno-sira_03.jpg",
-      "myshoigrashka_temno-sira_04.jpg",
-      "myshoigrashka_temno-sira_05.jpg"
-    ],
-    "price": 100,
-    "link": "myshka-temno-sira",
-    "category": "Іграшки",
-    "similar": [
-      {
-        "img": "myshoigrashka_bila_01.jpg",
-        "price": 100,
-        "link": "myshka-bila"
-      }
-    ]
+    "category": "Іграшки"
   },
   {
     "id": 4,
@@ -66,41 +33,7 @@
     ],
     "price": 250,
     "link": "kotyk-bezhevyi",
-    "category": "Іграшки",
-    "similar": [
-      {
-        "img": "kotoigrashka_sirenka_01.jpg",
-        "price": 250,
-        "link": "kotyk-siryi"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Котик сірий",
-    "description": [
-      "Сіренький, м'якенький та посміхається очима. Готовий прикрашати собою вашу оселю.",
-      "Іграшка котик, плетений спицями з акрилової пряжі, має наповнення холофайбер та вишиту мордочку.",
-      "Розмір: 20/15см."
-    ],
-    "images": [
-      "kotoigrashka_sirenka_01.jpg",
-      "kotoigrashka_sirenka_02.jpg",
-      "kotoigrashka_sirenka_03.jpg",
-      "kotoigrashka_sirenka_04.jpg",
-      "kotoigrashka_sirenka_05.jpg",
-      "kotoigrashka_sirenka_06.jpg"
-    ],
-    "price": 250,
-    "link": "kotyk-siryi",
-    "category": "Іграшки",
-    "similar": [
-      {
-        "img": "bezheva_kotoigrashka_01.jpg",
-        "price": 250,
-        "link": "kotyk-bezhevyi"
-      }
-    ]
+    "category": "Іграшки"
   },
   {
     "id": 13,

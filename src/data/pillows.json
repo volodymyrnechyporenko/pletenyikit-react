@@ -371,41 +371,7 @@
     ],
     "price": 1200,
     "link": "kotogentleman-z-chubchykom",
-    "category": "Подушки",
-    "similar": [
-      {
-        "img": "kotogentleman-koliorovyi-01.jpeg",
-        "price": 1200,
-        "link": "kotogentleman-koliorovyi"
-      }
-    ]
-  },
-  {
-    "id": 51,
-    "name": "Котоджентльмен кольоровий",
-    "description": [
-      "Хто сказав, що котику не можна носити штанці на підтяжках і довгу гривку? Звісно котикам можна вдягати будь що, бо їм все пасує. Яскраве поєднання блакитного та бірюзово-малинового - чудово виглядає на цьому котоПодухові. Він - неймовірно пухнастий, м'якенький та легенький, і вже готовий оселятись на ваших диванах чи ліжках.",
-      "Матеріали: акрил (пряжа), холофайбер (наповнювач).",
-      "Розмір: 32/30/12см."
-    ],
-    "images": [
-      "kotogentleman-koliorovyi-01.jpeg",
-      "kotogentleman-koliorovyi-02.jpeg",
-      "kotogentleman-koliorovyi-03.jpeg",
-      "kotogentleman-koliorovyi-04.jpeg",
-      "kotogentleman-koliorovyi-05.jpeg",
-      "kotogentleman-koliorovyi-06.jpeg"
-    ],
-    "price": 1200,
-    "link": "kotogentleman-koliorovyi",
-    "category": "Подушки",
-    "similar": [
-      {
-        "img": "kotogentleman-z-chubchykom-01.jpeg",
-        "price": 1200,
-        "link": "kotogentleman-z-chubchykom"
-      }
-    ]
+    "category": "Подушки"
   },
   {
     "id": 53,
