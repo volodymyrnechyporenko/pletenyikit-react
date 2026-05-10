@@ -18,24 +18,6 @@
     "category": "Іграшки"
   },
   {
-    "id": 4,
-    "name": "Котик бежевий",
-    "description": [
-      "Бежевий котик і його рожевий носик готові їхати до вас і тішити своєю м'якістю та рукотворністю.",
-      "Розміри: ширина 13см, довжина 19см."
-    ],
-    "images": [
-      "bezheva_kotoigrashka_01.jpg",
-      "bezheva_kotoigrashka_02.jpg",
-      "bezheva_kotoigrashka_03.jpg",
-      "bezheva_kotoigrashka_04.jpg",
-      "bezheva_kotoigrashka_05.jpg"
-    ],
-    "price": 250,
-    "link": "kotyk-bezhevyi",
-    "category": "Іграшки"
-  },
-  {
     "id": 13,
     "name": "Біленьке велюрове кошеня",
     "description": [
